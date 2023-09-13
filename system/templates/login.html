@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form method = 'POST' action = '' style = 'display : flex; flex-direction: column;'>
+        {% csrf_token %}
+
+        <h1>Login</h1>
+        <input type="text" name = 'username'> username
+        <input type="password" name = 'password1'> pass
+
+        <button type = 'submit' name = 'Login'>Login</button>
+    </form>
+    
+{% endblock %}
