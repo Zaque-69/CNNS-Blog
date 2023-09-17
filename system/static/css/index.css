@@ -1,0 +1,138 @@
+
+a{
+    border : none;
+    border-radius : .33rem;
+    padding : .66rem;
+    color: #D8DEFD;
+    transition: transform 150ms, box-shadow 150ms;
+    text-decoration: none;
+    font-size : 1.2rem;
+}
+h1{
+    color : #02081C;
+}
+body{
+    margin : 0;
+    background-color : #E8E4DA;
+}
+
+nav{
+    display : flex;
+}
+.container {
+    margin: 0 auto;
+    max-width : 992px;
+    padding : 1rem;
+    background-color : #f1eaca;
+    border-radius : .33rem;
+}
+
+.mod-width{
+    max-width : 40rem; 
+    width : 100%; 
+    gap : 2rem;
+}
+.continut{
+    text-align : center;
+
+}
+.background-continut{
+    background-color : #f0e6b2;
+    padding : .33rem;
+    border-radius : .33rem;
+}
+
+form{
+    display : flex; 
+    flex-direction: column;
+    height : 100%;
+}
+.getScreen{
+
+    display : flex;
+    background-color : #1E2D49;
+   
+}
+input{
+    width : 75%;
+    height : 1.75rem;
+    border: none;
+    color : white;
+    border-bottom: 3px solid black;
+    border-radius : .5rem;
+    padding : .33rem;
+    background-color : #190a2a;
+}
+@keyframes gradient{
+    0%{
+        background-position : 0% 50%;
+    }
+    33%{
+        background-position : 50% 100%;
+    }
+    66%{
+        background-position : 100% 50%;
+    }
+    100%{
+        background-position : 0% 50%; 
+    }
+}
+button{
+    font-size : 1rem;
+    width : 30%;
+    height : 2rem;
+    border : 3px solid #190a2a;
+    cursor : pointer;
+    border-radius : 4rem;
+    background : white;
+    background-size : 400% 400%;
+    animation : gradient 15s ease infinite; 
+    color : ##190a2a;
+    transition : .2s;
+}
+
+.changeRight{
+    background-color: #C3D7EF;
+}
+
+*{
+    font-family : Sans-serif;
+
+
+}
+@keyframes an {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    95% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.formOutsideDiv{
+    border-radius : 1rem 0 0 1rem ;
+    background-image: url("/static/imagesForBase/white.png");
+    background-repeat: no-repeat;
+    background-color: white; 
+    min-width : 20rem;
+    width : 25%;
+}
+.secondDivFlex{
+    color : white;
+    background:
+    linear-gradient(336deg, rgba(120, 0, 255, 0.88), rgba(120,0,20,0) 70.71%),
+    linear-gradient(217deg, #FEEA76, #A84F70 70.71%);
+    width : 50%;
+}
+
+.classroom{
+    display : none;
+}
