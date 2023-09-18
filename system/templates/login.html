@@ -1,15 +1,21 @@
-{% extends "base.html" %}
-
+{% extends 'baseLogin.html' %}
+{% load static %}
 {% block content %}
-
-    <form method = 'POST' action = '' style = 'display : flex; flex-direction: column;'>
+    <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' style = 'background: none;'>
         {% csrf_token %}
-
-        <h1>Login</h1>
-        <input type="text" name = 'username'> username
-        <input type="password" name = 'password1'> pass
-
-        <button type = 'submit' name = 'Login'>Login</button>
+        <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
+        <h1 style = 'color : #210D38; text-shadow: 2px 2px 2rem #fff;'>Bun Venit ! </h1>
+        <input type="text" name = 'username' placeholder="  Username" > <br>
+        <input type="password" name = 'password1' placeholder="  Password"> <br>
+        <button type = 'submit' name = 'Login' >Login</button> <br>
+        <p style = ' text-align: center;' class = 'w-100 display-flex justify-content-center align-items-center '>Nu ai un cont ?<a style = 'color : #4862A9; cursor : pointer;' href = "{% url 'register' %}">Înregistrează-te !</a></p>
     </form>
-    
+    <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'gap : 1rem; height : 10%;'>
+            <a href = 'https://twitter.com/Z4queee'>
+                <img src = '{% static "imagesForBase/x.png" %}' style = 'height : 2rem;'>
+            </a>
+            <a href = 'https://www.instagram.com/zanddry/'>
+                <img src = '{% static "imagesForBase/insta.png" %}' style = 'height : 2rem;'>
+            </a>
+        </div>
 {% endblock %}
