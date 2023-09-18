@@ -1,40 +1,54 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+	<link rel="stylesheet" href="{% static 'css/shorts.css' %}">
+	<link rel="stylesheet" href="{% static 'css/hover.css' %}">
+
 </head>
 <body>
-    <nav style = 'display: flex; align-items: center; 
-        justify-content: center; gap : 1rem; background-color: lightblue;'>
-        <a href = "{% url 'home' %}">Home</a>
+    <nav style = 'background-color: #49317C; display : flex;'>   
+        <div style = "width : 16rem; padding : .4rem;" 
+            class = 'display-flex align-items-center justify-content-center'>
+            <img src = "{% static 'imagesForBase/logo.png' %}" style = 'height : 2.3rem;'>
+        </div>
+        <div style = "width : 100%; padding : .33rem;
+            display: flex; align-items: center; justify-content: right;">
+            <div class = 'display-flex align-items-center justify-content-center mod-width'>
+                <a href = "{% url 'home' %}">Home</a>
 
-        {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
 
-        <a href = "{% url 'logout' %}">Logout</a>
-        <a href = "{% url 'profile' %}">Profie</a>
+                <a href = "{% url 'logout' %}">Logout</a>
+                <a href = "{% url 'profile' %}">Profie</a>
 
-        {% else %}
+                {% else %}
 
-        <a href = "{% url 'log' %}">Login</a>
-        <a href = "{% url 'register' %}">Register</a>
+                <a href = "{% url 'log' %}">Login</a>
+                <a href = "{% url 'register' %}">Register</a>
 
-
-        {% endif %}
-        
+                {% endif %}
+            </div>
+            <div style = "max-width : 10rem; width : 100%; gap : 1rem;" 
+                class = 'display-flex align-items-center justify-content-center'>
+                <a onclick="changeThemes('#0D0D0D', '#232323', '#383838', '#4F4F4F', '#fff')">
+                    <img src="{% static 'imagesForBase/moon.png' %}" style = 'height : 1.5rem'>
+                </a>
+                <a onclick="changeThemes('#49317C', '#E8E4DA', '#FBEEB5', '#FBEEB5', 'black')">
+                    <img src="{% static 'imagesForBase/sun.png' %}" style = 'height : 1.5rem'>
+                </a> 
+            </div>
+        </div>
     </nav>
     <br>
     {% block content %} {% endblock %}
 </body>
-<style>
+<script src = "{% static 'js/index.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    a{
-        border : none;
-        padding : .33rem;
-        color : white;
-        background-color: rgb(140, 190, 190);
-        direction: none;
-    }
-</style>
 </html>
