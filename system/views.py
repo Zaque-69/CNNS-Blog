@@ -30,10 +30,11 @@ def loginSystem(request):
         passw = request.POST.get('password1')
         user = authenticate(request, username = usern, password = passw)
 
-        if user is not None :
-            login(request, user)
-            return redirect('home')
-        else : print('muci')
+        #try:
+        #if user is not None : 
+        login(request, user)
+        return redirect('home')
+        #except AttributeError : print('ma-ta')
 
     return render(request, 'login.html')
 
