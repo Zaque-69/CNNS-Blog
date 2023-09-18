@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'css/shorts.css'%}">
+	<link rel="stylesheet" href="{% static 'css/index.css'%}">
+	<link rel="stylesheet" href="{% static 'css/media.css'%}">
+
+</head>
+<body>
+<div style = 'position : absolute; flex-wrap: wrap; ' class = 'w-100 h-100 display-flex justify-content-center align-items-center'>
+    <div class = 'h-75 display-flex formOutsideDiv' style = 'flex-direction: column;'>
+        {% block content %} {% endblock %}
+    </div>
+    <div class = ' h-75 secondDivFlex' style = 'flex-direction: column;'>
+        <div class = 'w-100 h-75 display-flex align-items-center justify-content-center'>
+            <span class = 'firstType' style = 'color : white; font-size: 3rem; text-align: center ; padding : 2rem;'></span>
+            <span style = 'color : #202124' class = 'classroom'>Classroom</span>
+        </div>
+        <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'>
+
+        <span>Contact CNNS<a href="https://colegiul-nichita.ro/contact/">aici.</a></span>
+        <span>Z4que ® all rights reserved </span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src = "{% static 'js/index.js' %}"></script>
+<script src = "{% static 'js/typeit.js' %}"></script>
+
+</html>
