@@ -2,13 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-class Profile:
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profilePics')
-
-    def __str__(self) :
-        return f'{self.user.username} Profie'
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
