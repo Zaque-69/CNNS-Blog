@@ -40,4 +40,15 @@ def loginSystem(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    u_profile = UpdateUser()
+
+    if request.method == 'POST' :
+        u_profile = UpdateUser(request.POST, instance = request.user)\
+        
+        if u_profile.is_valid() : 
+            u_profile.save()
+
+    context = {
+        'u_form' : u_profile,
+    }
+    return render(request, 'profile.html', context)
