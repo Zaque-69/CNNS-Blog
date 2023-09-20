@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UpdateUser
 from .models import Post
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -31,9 +31,9 @@ def loginSystem(request):
         user = authenticate(request, username = usern, password = passw)
 
         #try:
-        #if user is not None : 
-        login(request, user)
-        return redirect('home')
+        if user is not None : 
+            login(request, user)
+            return redirect('home')
         #except AttributeError : print('ma-ta')
 
     return render(request, 'login.html')
@@ -43,7 +43,7 @@ def profile(request):
     u_profile = UpdateUser()
 
     if request.method == 'POST' :
-        u_profile = UpdateUser(request.POST, instance = request.user)\
+        u_profile = UpdateUser(request.POST, instance = request.user)
         
         if u_profile.is_valid() : 
             u_profile.save()
