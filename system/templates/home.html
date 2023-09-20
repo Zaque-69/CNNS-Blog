@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{ load crispy_forms_tags }
 
 {% block content %}
     {% for post in posts %}
         <div class = 'padding-1rem'>
+            <img src="{{post.author.profile.image.url}}" alt="">
 			<div class = 'container'>
 				<h2>{{ post.author }} - {{ post.date_posted }}</h2>
                 <h1>{{ post.title }}</h1>
