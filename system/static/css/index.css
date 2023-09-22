@@ -10,10 +10,11 @@ a{
 }
 h1{
     color : #02081C;
+    text-align : center;
 }
 body{
     margin : 0;
-    background-color : #E8E4DA;
+    background-color : #DEDAD2;
 }
 
 nav{
@@ -22,8 +23,8 @@ nav{
 .container {
     margin: 0 auto;
     max-width : 992px;
-    padding : 1rem;
-    background-color : #f1eaca;
+    padding : .66rem;
+    background-color : #ede9e2;
     border-radius : .33rem;
 }
 
@@ -37,7 +38,7 @@ nav{
 
 }
 .background-continut{
-    background-color : #f0e6b2;
+    background-color : #f0ede7;
     padding : .33rem;
     border-radius : .33rem;
 }
@@ -95,11 +96,7 @@ button{
     background-color: #C3D7EF;
 }
 
-*{
-    font-family : Sans-serif;
 
-
-}
 @keyframes an {
     0% {
         opacity: 0;
@@ -132,7 +129,23 @@ button{
     linear-gradient(217deg, #FEEA76, #A84F70 70.71%);
     width : 50%;
 }
-
 .classroom{
     display : none;
+}
+*{
+    font-family: 'Poppins';
+
+}
+.round{
+    border-radius : 5rem;
+    border : 1px solid gray;
+    overflow : hidden;
+}
+.themes{
+    display : block;
+    max-width : 10rem;
+    gap : 1rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
 }
