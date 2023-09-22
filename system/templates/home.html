@@ -2,18 +2,23 @@
 { load crispy_forms_tags }
 
 {% block content %}
-    {% for post in posts %}
-        <div class = 'padding-1rem'>
-            <img src="{{post.author.profile.image.url}}" alt="">
-			<div class = 'container'>
-				<h2>{{ post.author }} - {{ post.date_posted }}</h2>
-                <h1>{{ post.title }}</h1>
-				<div class = 'background-continut'>
-                <p class="continut">
-                    {{ post.content }}
-                </p>
+    {% for post in posts %}     
+        
+            <div class = 'padding-1rem'>
+                <div class = 'container '>
+                    <div class = 'w-100 display-flex align-items-center' style = 'gap : 1rem;'>
+                        <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
+                        <h2 class = 'w-50'>{{ post.author }}</h2>
+                    </div> <br>
+                    
+                    <div class = 'background-continut'>
+                        <h3>{{ post.title }} - {{ post.date_posted }}</h3>
+                    <p class="continut">
+                        {{ post.content }}
+                    </p>
+                    </div>
                 </div>
             </div>
-		</div>
+
     {% endfor %}
 {% endblock %}
