@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 	<link rel="stylesheet" href="{% static 'css/shorts.css' %}">
 	<link rel="stylesheet" href="{% static 'css/hover.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 </head>
 <body>
-    <nav style = 'background-color: #49317C; display : flex;'>   
+    <nav style = 'background-color: #49317C; display : flex; position : fixed;' class="w-100">   
         <div style = "width : 16rem; padding : .4rem;" 
             class = 'display-flex align-items-center justify-content-center'>
             <img src = "{% static 'imagesForBase/logo.png' %}" style = 'height : 2.3rem;'>
@@ -34,17 +35,17 @@
 
                 {% endif %}
             </div>
-            <div style = "max-width : 10rem; width : 100%; gap : 1rem;" 
-                class = 'display-flex align-items-center justify-content-center'>
+            <!--<div class = 'themes'>
                 <a onclick="changeThemes('#0D0D0D', '#232323', '#383838', '#4F4F4F', '#fff')">
                     <img src="{% static 'imagesForBase/moon.png' %}" style = 'height : 1.5rem'>
                 </a>
-                <a onclick="changeThemes('#49317C', '#E8E4DA', '#FBEEB5', '#FBEEB5', 'black')">
+                <a onclick="changeThemes('#49317C', '#E8E4DA', '#f1eaca', '#FBEEB5', 'black')">
                     <img src="{% static 'imagesForBase/sun.png' %}" style = 'height : 1.5rem'>
                 </a> 
-            </div>
+            </div>-->
         </div>
     </nav>
+    <div style = 'height : 3.5rem;'></div>
     <br>
     {% block content %} {% endblock %}
 </body>
