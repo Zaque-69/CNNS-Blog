@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' style = 'background: none;'>
+    {% csrf_token %}
+    <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
+    esti sigur? {{object.title}}
+    <button type = 'submit' name = 'Delete'>Yes, Delete</button> <br>
+    <a href = '#'>Nu</a>
+    <div class = 'padding-1rem'>
+        <p style = ' text-align: center;' class = 'w-100 display-flex justify-content-center align-items-center '>Nu ai un cont ?<a style = 'color : #4862A9; cursor : pointer;' href = "{% url 'register' %}">Înregistrează-te !</a></p>
+    </div>
+</form>
+
+
+{% endblock %}
+<!--    <form method = 'POST'>
+        {% csrf_token %}
+        <input type="text" name = 'title'>
+        <input type="text" name = 'content'>
+        <button type = 'submit' name = 'Create' >Create</button>
+    </form>-->
