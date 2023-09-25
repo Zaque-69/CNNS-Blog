@@ -1,23 +1,60 @@
 {% extends "base.html" %}
 
+{% block tit %}
+<div class = 'fullscreen' style = 'flex-direction: column; position : fixed;'>
+    <div style = 'display : flex ; gap : 1rem;'>
+        <span class = 'CNNSletters'>C</span>
+        <span class = 'CNNSletters'>N</span>
+        <span class = 'CNNSletters'>N</span>
+        <span class = 'CNNSletters'>S</span>
+    </div>
+    <div style = 'display : flex; gap :1rem;'>
+        <span class = 'PL'>P</span>
+        <span class = 'PL'>L</span>
+        <span class = 'PL'>O</span>
+        <span class = 'PL'>I</span>
+        <span class = 'PL'>E</span>
+        <span class = 'PL'>S</span>
+        <span class = 'PL'>T</span>
+        <span class = 'PL'>I</span>
+    </div>
+    <div style = 'display : flex; gap :1rem;'>
+        <span class = 'Home'>H</span>
+        <span class = 'Home'>O</span>
+        <span class = 'Home'>M</span>
+        <span class = 'Home'>E</span>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
+
+    <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'gap : 1rem;padding-left : 5rem;'>
+        <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+        <span style = 'min-width: 10rem; display : block; font-size: 1rem;'>Welcome, {{ user.username }} !</span> 
+
+        <a href = '{% url "post-new" %}' class = 'zButon btnHover'>New Post</a>
+    </div>
+
     {% for post in posts %}     
         
-            <div class = 'padding-1rem'>
-                <div class = 'container '>
-                    <div class = 'w-100 display-flex align-items-center' style = 'gap : 1rem;'>
-                        <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
-                        <h2 class = 'w-50'>{{ post.author }}</h2>
-                    </div> <br>
-                    
-                    <div class = 'background-continut'>
-                        <h3>{{ post.title }} - {{ post.date_posted }}</h3>
-                    <p class="continut">
-                        {{ post.content }}
-                    </p>
+        <div class = 'padding-1rem'>
+            <div class = 'container display-flex' style = 'justify-content: top; gap : .66rem;'>
+                <div class = 'display-flex' style = 'gap : 1rem; width : 4rem; padding-top : .66rem;'>
+                    <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
+                </div> 
+                <div class = 'w-100'>
+                    <div class = 'w-100 display-flex'>
+                        <h5 style = 'color : #552360;'>{{post.author}} </h5>
+                        <h5>‏‏‎ ‎-‏‏‎ ‎ </h5>  
+                        <h5 style = 'color : gray;'>{{post.date_posted}}</h5> 
                     </div>
+                    <hr>
+                    <a href="{% url 'post-detail' post.id %}" style = 'padding : 0; color : black;'><h2>{{post.title}}</h2></a>
+                    <p>{{post.content}}</p>
                 </div>
             </div>
+        </div>
 
     {% endfor %}
 {% endblock %}
