@@ -15,15 +15,25 @@
 <div style = 'position : absolute; flex-wrap: wrap; ' class = 'w-100 h-100 display-flex justify-content-center align-items-center'>
     <div class = 'h-75 display-flex formOutsideDiv' style = 'flex-direction: column;'>
         {% block content %} {% endblock %}
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'>
+            <a href="https://colegiul-nichita.ro/contact/" style = 'color : #4862A9;'>Contact CNNS aici.</a>
+            Personal Social Networks : 
+            <div class = 'display-flex align-items-center justify-content-center' style = 'flex-direction: row; gap : 1rem;'>
+                <a href = 'https://twitter.com/Z4queee' style = 'padding-top : 1vh;'>
+                    <img src = '{% static "imagesForBase/x.png" %}' style = 'height : 1.5rem;'>
+                </a>
+                <a href = 'https://www.instagram.com/zanddry/' style = 'padding-top : 1vh;'>
+                    <img src = '{% static "imagesForBase/insta.png" %}' style = 'height : 1.5rem;'>
+                </a>
+            </div>
+        </div>
     </div>
     <div class = ' h-75 secondDivFlex' style = 'flex-direction: column;'>
-        <div class = 'w-100 h-75 display-flex align-items-center justify-content-center'>
-            <span class = 'firstType' style = 'color : white; font-size: 3rem; text-align: center ; padding : 2rem;'></span>
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'height : 80%;'>
+            <span class = 'firstType' style = 'color : white; font-size: 2.66rem; text-align: center ; padding : 2rem;'></span>
             <span style = 'color : #202124' class = 'classroom'>Classroom</span>
         </div>
-        <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'>
-
-        <span>Contact CNNS<a href="https://colegiul-nichita.ro/contact/">aici.</a></span>
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'flex-direction: column; height : 20%;'>
         <span>Z4que ® all rights reserved </span>
         </div>
     </div>
