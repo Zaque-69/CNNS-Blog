@@ -2,11 +2,15 @@
 a{
     border : none;
     border-radius : .33rem;
-    padding : .33rem;
+    padding : .27rem;
     color: #D8DEFD;
     transition: .33s;
     text-decoration: none;
     font-size : 1rem;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+
 }
 button{
     font-size : 1rem;
@@ -16,8 +20,7 @@ button{
     border : 3px solid #190a2a;
     cursor : pointer;
     border-radius : .5rem;
-    background : white;
-    background-size : 400% 400%;
+    background : none;
     animation : gradient 15s ease infinite; 
     color : #190a2a;
     transition : .33s;
@@ -152,14 +155,16 @@ input{
 
 .fullscreen{
     background: linear-gradient(336deg, #723C82, rgba(120,0,20,0) 70.71%),
-                linear-gradient(217deg, #FCD84B, #552360 70.71%);
+                linear-gradient(217deg, #FCD84B, #9838b5 70.71%);
     width : 100%;
     display : flex;
     align-items : center;
     justify-content : center;
     gap : 1rem;
+    background-size : 150% 150%;
     transition : .4s;
     position : absolute;
+    animation : gradient 3s infinite;
 }
 span{
     cursor : pointer;
@@ -180,11 +185,16 @@ span{
 
 *{
     font-family: 'Poppins';
-
 }
 .zButon{
     border : 3px solid #190a2a;
     letter-spacing: 2px;
     color : #190a2a;
     background : none;
+}
+.ifBlock{
+    display : none;
+}
+.elseBlock{
+    display : none;
 }
