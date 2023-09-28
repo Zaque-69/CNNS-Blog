@@ -11,7 +11,8 @@ urlpatterns = [
     path('login/', views.loginSystem, name = 'log'),
     path('profile/',  views.profile , name = 'profile'),
     path('post/<pk>/', PostdDetailView.as_view(), name = 'post-detail'),
-    path('post/<pk>/update', PostUpdateView.as_view(), name = 'post-update'),
+    path('post/<pk>/update/', PostUpdateView.as_view(), name = 'post-update'),
     #path('post/<pk>/delete', PostdeleteView.as_view(), name = 'post-delete'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'logout.html') , name = 'logout'),
+    path('contact/', views.contactPage, name = 'contactPage')
 ]
