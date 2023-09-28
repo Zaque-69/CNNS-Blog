@@ -49,10 +49,18 @@
             {% csrf_token %}
             <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
             <h1 style = 'color : #210D38; text-shadow: 2px 2px 2rem #fff;'> Edit profile </h1>
-            <input type = 'text' name = 'username' placeholder = 'Username'> <br>
-            <input type = 'text' name = 'email' placeholder = 'Email'> <br>
+            <input type = 'text' name = 'username' placeholder = 'Username' id = 'username'> <br>
+            <input type = 'text' name = 'email' placeholder = 'Email' id = 'email'> <br>
+
+            <div class = 'container display-flex align-items justify-content-center' style = 'background-color: #e25d61;'>
+                <span style = 'color : white; padding : .33rem; text-align: center;'>All fields are mandatory. Please, be careful when you change your data !</span>    
+            </div> <br>
             <button type = 'submit' class = 'btnHover'>Update</button> <br>
             <span>Z4que ® all Rights Reserved</span> <br>
         </form>
 </div>
+<script>
+    document.getElementById('email').value = '{{user.email}}';
+    document.getElementById('username').value = '{{user.username}}';
+</script>
 {% endblock %}
