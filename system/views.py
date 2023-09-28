@@ -105,3 +105,6 @@ def profile(request):
 
 def StatusCode404(request, exception):
     return render(request, '404.html')
+
+@login_required
+def contactPage(request) : return render(request, 'contact.html')
