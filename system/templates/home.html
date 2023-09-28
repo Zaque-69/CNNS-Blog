@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block tit %}
 <div class = 'fullscreen' style = 'flex-direction: column; position : fixed;'>
     <div style = 'display : flex ; gap : 1rem;'>
@@ -29,14 +29,22 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-    <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'gap : 1rem;padding-left : 5rem;'>
-        <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
-        <span style = 'min-width: 10rem; display : block; font-size: 1rem;'>Welcome, {{ user.username }} !</span> 
-
-        <a href = '{% url "post-new" %}' class = 'zButon btnHover'>New Post</a>
+    <div style = 'padding : 1rem;'>
+        <div class = 'container align-items-center justify-content-center' style = 'gap : 1rem; padding-left : 5rem;'>
+            <div class = 'display-flex align-items-center justify-content-center' style = 'gap : 1rem;'>
+                <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+                    <span style = 'min-width: 10rem; display : block; font-size: 1rem;'>Welcome, {{ user.username }} !</span> 
+                <a href = '{% url "post-new" %}' class = 'zButon btnHover'>New Post</a>
+            </div>
+            {% if user.is_superuser %}
+            <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'color : red;'>
+                ADMIN PAGE
+            </div>
+            {% endif %}
+        </div>
     </div>
     {% endif %}
-
+    
     {% for post in posts %}     
         
         <div class = 'padding-1rem'>
@@ -49,13 +57,31 @@
                         <h5 style = 'color : #552360;'>{{post.author}} </h5>
                         <h5>‏‏‎ ‎-‏‏‎ ‎ </h5>  
                         <h5 style = 'color : gray;'>{{post.date_posted}}</h5> 
-                    </div>
-                    <hr>
-                    <a href="{% url 'post-detail' post.id %}" style = 'padding : 0; color : black;'><h2>{{post.title}}</h2></a>
+                    </div><hr>
+                    <h2 id = 'elseBlock'>{{post.title}}</h2>
                     <p>{{post.content}}</p>
+                    <div class="display-flex align-items-center justify-content-center" 
+                        style = 'gap : 1rem;'>
+                        <a href="{% url 'post-update' post.id %}" 
+                            class = 'ifBlock {{post.author}}{{post.id}} zButon btnHover'>Update</a>
+                        <a href="{% url 'post-detail' post.id %}" class = 'zButon btnHover'>More</a>
+                    </div>
                 </div>
+                <script>
+                if('{{user}}' == '{{post.author}}') {
+                    document.querySelector('.{{post.author}}{{post.id}}').style.display = 'block';
+                }else {try {document.getElementById('#elseBlock').css.display = 'block';}
+                    catch{}}
+                </script>
             </div>
         </div>
-
     {% endfor %}
+    <hr class="w-50" style = 'border : .5px solid #c5b9c1;'>
+    <div class = 'w-100 display-flex align-items-center justify-content-center'>
+        <div class = 'w-50 display-flex align-items-center' style = 'justify-content: end; gap : .2rem;'>
+            <a href = 'https://twitter.com/Z4queee'><img src="{% static 'imagesForBase/x.png' %}" style = 'height : 1.2rem;'></a>
+            <a href = 'https://www.instagram.com/zanddry/'><img src="{% static 'imagesForBase/insta.png' %}" style = 'height : 1.2rem;'></a>
+        </div>
+    </div>
+    <br>
 {% endblock %}
