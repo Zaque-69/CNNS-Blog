@@ -1,18 +1,18 @@
-# Ｗｈａｔ ｉｓ ＣＮＮＳ ? 
-  ○ C. N. N. S. is a top highschool in Ploiesti, Prahova, Romania;
+# ᴡʜᴀᴛ ɪꜱ ᴄɴɴꜱ? :
+  C. N. N. S. is a top highschool in Ploiesti, Prahova, Romania;
 
-# ＡＢＯＵＴ:
+# ᴀʙᴏᴜᴛ:
   ○ This is a website built at the level of highschool;
   
-# ＦＥＡＴＵＲＥＳ :
-  ○ 👥 Login and register systems;
+# ꜰᴇᴀᴛᴜʀᴇꜱ :
+  ○ 👥 Login and register systems; <br />
   ○ 💼 Posting information as a teacher or a student;
 
-# ＩＮＳＴＡＬＡＴＩＯＮ :
-  # PIP :
+# INSTALLATION :
+  # ᴘɪᴘ :
     > pip3 install django.
-  # LINUX :
+  # ʟɪɴᴜx :
     $ sudo apt install python3-django
 
-# ＲＵＮＳＥＲＶＥＲ:
+# ʀᴜɴꜱᴇʀᴠᴇʀ:
   > python3 manage.py runserver
