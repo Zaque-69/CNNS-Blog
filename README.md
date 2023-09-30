@@ -12,7 +12,7 @@
   # ᴘɪᴘ :
     > pip3 install django.
   # ʟɪɴᴜx :
-    $ sudo apt install python3-django
+    $ sudo apt-get install python3-django
 
 # ʀᴜɴꜱᴇʀᴠᴇʀ:
   > python3 manage.py runserver
