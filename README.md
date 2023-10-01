@@ -10,7 +10,7 @@
 
 # INSTALLATION :
   # ᴘɪᴘ :
-    > pip3 install django.
+    > pip3 install django
   # ʟɪɴᴜx :
     $ sudo apt-get install python3-django
 
