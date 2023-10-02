@@ -25,6 +25,7 @@
         <span class = 'Home'>F</span>
         <span class = 'Home'>I</span>
         <span class = 'Home'>L</span>
+        <span class = 'Home'>E</span>
     </div>
 </div>
 {% endblock %}
@@ -55,7 +56,8 @@
             <div class = 'container display-flex align-items justify-content-center' style = 'background-color: #e25d61;'>
                 <span style = 'color : white; padding : .33rem; text-align: center;'>All fields are mandatory. Please, be careful when you change your data !</span>    
             </div> <br>
-            <button type = 'submit' class = 'btnHover'>Update</button> <br>
+            <button type = 'submit' class = 'btnHover zButon'>Update</button> <br> 
+            <a href = "{% url 'logout' %}" class = 'zButon btnHover' style = 'max-width:10rem; width : 100%;'>Logout</a> <br>
             <span>Z4que ® all Rights Reserved</span> <br>
         </form>
 </div>
