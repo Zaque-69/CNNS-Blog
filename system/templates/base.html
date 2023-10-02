@@ -2,52 +2,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>CNNS BLOG - Welcome, {{user.username}}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel = "icon" href = "{% static 'imagesForBase/logo.ico'%}">
     <link rel="stylesheet" href="{% static 'css/media.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 	<link rel="stylesheet" href="{% static 'css/shorts.css' %}">
 	<link rel="stylesheet" href="{% static 'css/hover.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-
 </head>
 <body>
     {% block tit %}
     {% endblock %}
     </div>
-    <nav style = 'background-color: #552360; display : flex;' class="w-100">   
+    <nav style = 'background-color: #552360;' class="w-100 display-flex align-items-center justify-content-center">   
         <div style = "width : 16rem; padding : .4rem;" 
             class = 'display-flex align-items-center justify-content-center'>
-            <img src = "{% static 'imagesForBase/logo.png' %}" style = 'height : 2.3rem;'>
+            <a href = "{% url 'home' %}">
+                <img src = "{% static 'imagesForBase/logo.png' %}" style = 'height : 2.3rem;'>
+            </a>
         </div>
         <div style = "width : 100%; padding : .33rem;
             display: flex; align-items: center; justify-content: right;">
             <div class = 'display-flex align-items-center justify-content-center mod-width'>
-                <a href = "{% url 'home' %}">Home</a>
                 {% if user.is_authenticated %}
-                <a href = "{% url 'logout' %}">Logout</a>
-                <a href = "{% url 'profile' %}">Profie</a>
+                    <a href = "{% url 'anunturi' %}">Anunturi</a>
+                    <a href = "{% url 'profile' %}">Profie</a>
+                    <a href = "{% url 'contactPage' %}">Contact</a>
                 {% else %}
-                <a href = "{% url 'log' %}">Login</a>
-                <a href = "{% url 'register' %}">Register</a>
+                    <a href = "{% url 'log' %}">Login</a>
+                    <a href = "{% url 'register' %}">Register</a>
                 {% endif %}
             </div>
 
         </div>
     </nav>
     <br>
-    {% block content %} {% endblock %}
+    {% block content %} 
+    
+    {% endblock %}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src = "{% static 'js/index.js' %}"></script>
-</html>
 
-<!--<div class = 'themes'>
-    <a onclick="changeThemes('#0D0D0D', '#232323', '#383838', '#4F4F4F', '#fff')">
-        <img src="{% static 'imagesForBase/moon.png' %}" style = 'height : 1.5rem'>
-    </a>
-    <a onclick="changeThemes('#49317C', '#E8E4DA', '#f1eaca', '#FBEEB5', 'black')">
-        <img src="{% static 'imagesForBase/sun.png' %}" style = 'height : 1.5rem'>
-    </a> 
-</div>-->
+</html>
