@@ -39,12 +39,12 @@
         </div>
         <div class = 'container' style = 'background-color: #c5b9c1;'> <br> <br>
             <form id="form" class=" display-flex align-items-center justify-content-center">
-                    <input type="text" name="from_name" id="from_name" placeholder = 'Your Email Adress...'> <br>
+                    <input type="text" name="from_name" id="from_name" placeholder = 'Your Email Adress...' style = 'display : none;'> <br>
                     <input type="text" name="to_name" id="to_name" placeholder="Your Name... (Optional)"> <br>
                     <textarea type="text" style = '   max-width : 50rem; width : 80%; height : 10rem; background-color: #2e203c;
                     color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;' name="message" id="message" placeholder = 'Message...'></textarea> <br>
-                    
                 <button type="submit" id="button" value="Send Email" class = 'btnHover zButon'>Submit</button><br>
+                <p style = 'color : #af0000'>Your e-mail will be receved from : {{user.email}}</p>
               </form>
         </div> <br> <br>
         <div class = 'display-flex align-items-center justify-content-center'>
