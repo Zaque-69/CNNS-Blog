@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}   
-        
     <div class = 'padding-1rem'>
         <div class = 'container display-flex' style = 'justify-content: top; gap : .66rem;'>
             <div class = 'display-flex' style = 'gap : 1rem; width : 4rem; padding-top : .66rem;'>
@@ -16,6 +15,10 @@
                 <hr>
                 <h2>{{object.title}}</h2>
                 <p>{{object.content}}</p>
+                {% if user.is_superuser %}
+                    <hr>
+                    <p>Clasa : {{post.class4post}}</p>
+                {% endif %}
             </div>
         </div>
     </div>
