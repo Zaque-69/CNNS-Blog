@@ -1,8 +1,8 @@
 
 a{
     border : none;
+    padding : .2rem;
     border-radius : .33rem;
-    padding : .27rem;
     color: #D8DEFD;
     transition: .33s;
     text-decoration: none;
@@ -12,6 +12,9 @@ a{
     justify-content : center;
 
 }
+hr{
+    border : .5px solid #c5b9c1;
+}
 button{
     font-size : 1rem;
     max-width:10rem;
@@ -19,7 +22,7 @@ button{
     height : 2rem;
     border : 3px solid #190a2a;
     cursor : pointer;
-    border-radius : .5rem;
+    border-radius : .33rem;
     background : none;
     animation : gradient 15s ease infinite; 
     color : #190a2a;
@@ -47,7 +50,7 @@ nav{
 }
 
 .mod-width{
-    max-width : 40rem; 
+    max-width : 30rem; 
     width : 100%; 
     gap : 2rem;
 }
@@ -131,10 +134,10 @@ input{
 }
 .secondDivFlex{
     color : white;
-    background:
-    linear-gradient(336deg, rgba(120, 0, 255, 0.88), rgba(120,0,20,0) 70.71%),
-    linear-gradient(217deg, #FEEA76, #A84F70 70.71%);
-    width : 50%;
+    background: linear-gradient(336deg, #ebd067, #681c80 70.71%),
+                linear-gradient(217deg, #673675, #b39830 70.71%);
+    background-size : 175% 175%;
+    animation : gradient 10s infinite;
 }
 .classroom{
     display : none;
