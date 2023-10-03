@@ -14,4 +14,10 @@ class UpdateUser(forms.ModelForm):
     email = forms.EmailField()
     class Meta : 
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'email'] 
+
+class UpdateUserAfterClass(forms.ModelForm):
+    last_name = forms.CharField(max_length=100)
+    class Meta : 
+        model = User
+        fields = ['last_name'] 
