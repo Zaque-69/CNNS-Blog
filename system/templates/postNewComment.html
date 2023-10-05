@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class = 'container display-flex align-items-center justify-content-center' style = 'flex-wrap: wrap; background-color: #c5b9c1;'>
+    <br>
+    <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem;padding-left : 5rem;'>
+        <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+        <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
+    </div>
+    <form method="POST" action="" enctype="multipart/form-data" class = 'display-flex align-items-center justify-content-center' style = 'flex-direction: column;'>
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button>
+        
+    </form>
+</div>
+
+<script>
+    console.log('USER LAST NAME {{user.username}}');
+</script>
+
+<script>
+
+    document.querySelector('.textinput').value = '{{user.last_name}}';   
+</script>
+<script>
+    document.getElementById('div_id_body').style.width = '100%';
+    document.getElementById('div_id_class4post').style.display = 'none';
+    document.querySelector('.requiredField').innerHTML = 'Post : ';
+    document.getElementById('div_id_post').style.padding = '1rem';
+    document.querySelector('textarea').style.height = '10rem';
+</script>
+{% endblock %}
