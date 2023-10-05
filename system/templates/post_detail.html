@@ -2,23 +2,21 @@
 
 {% block content %}   
     <div class = 'padding-1rem'>
-        <div class = 'container display-flex' style = 'justify-content: top; gap : .66rem;'>
-            <div class = 'display-flex' style = 'gap : 1rem; width : 4rem; padding-top : .66rem;'>
-                <img src="{{ object.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
-            </div> 
-            <div class = 'w-100'>
-                <div class = 'w-100 display-flex'>
+        <div class = 'container display-flex justify-content-center align-items-center' style = 'gap : .66rem;'>
+            <div style = 'width : 90%;'> <br>
+                <div class = 'w-100 display-flex' style = 'gap : .33rem;'>
+                    <img src="{{ object.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
                     <h5 style = 'color : #552360;'>{{object.author}} </h5>
                     <h5>‏‏‎ ‎-‏‏‎ ‎ </h5>  
                     <h5 style = 'color : gray;'>{{object.date_posted}}</h5> 
                 </div>
-                <hr>
                 <h2>{{object.title}}</h2>
-                <p>{{object.content}}</p>
+                <p>{{object.content}}{{object.body}}</p>
                 {% if user.is_superuser %}
                     <hr>
-                    <p>Clasa : {{post.class4post}}</p>
+                    <p>Clasa : {{object.class4post}}</p>
                 {% endif %}
+                <br>
             </div>
         </div>
     </div>
