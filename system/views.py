@@ -1,5 +1,5 @@
 import json
-from .models import Post
+from .models import Post, Comment
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm, UpdateUser, UpdateUserAfterClass
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -7,10 +7,12 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView, D
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def home(request):
     return render(request, 'home.html', {
-        'posts' : Post.objects.all().order_by('-date_posted')
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all()
     })
 
 def clasaX(request):
@@ -77,6 +79,7 @@ def SelectClass(request):
         'form' : form
     })
 
+
 @login_required
 def profile(request):
     u_profile = UpdateUser()
@@ -99,6 +102,12 @@ def anunturiPage(request) :
     return render(request, 'anunturi.html', {
         'posts' : Post.objects.all().order_by('-date_posted')
     })
+
+@login_required
+def comentarii(request) : 
+    return render(request, 'comment.html')
+
+
 
 class PostListView(ListView):
     model = Post
@@ -133,8 +142,49 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
         if self.request.user == post.author : return True
         else : return False
 
+
 class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
+    template_name = 'postDelete.html'
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author : return True
+        else : return False
+
+
+
+
+class CommentCreateView(CreateView):
+    model = Comment
+    template_name = 'postNewComment.html'
+    fields = ['post', 'body', 'class4post']
+
+    def form_valid(self, form): 
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class PostdDetailViewComment(DetailView):
+    model = Comment
+    template_name = 'post_detail.html'
+
+class PostUpdateViewComment(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model = Comment
+    template_name = 'postNewComment.html'
+    fields = ['post', 'body', 'class4post']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author : return True
+        else : return False
+
+class PostdeleteViewComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
     template_name = 'postDelete.html'
     success_url = '/'
 
