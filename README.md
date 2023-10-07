@@ -8,11 +8,14 @@
   ○ 👥 Login and register systems; <br />
   ○ 💼 Posting information as a teacher or a student;
 
-# INSTALLATION :
+# Commands :
+
   # ᴘɪᴘ :
     > pip3 install django
-  # ʟɪɴᴜx :
-    $ sudo apt-get install python3-django
-
-# ʀᴜɴꜱᴇʀᴠᴇʀ:
-  > python3 manage.py runserver
+    > pip3 install django-crispy-forms
+    > pip install crispy-bootstrap5
+    
+  # Runserver :
+    > python manage.py makemigrations
+    > python manage.py migrate
+    > python manage.py runserver
