@@ -1,5 +1,5 @@
 import json
-from .models import Post, Comment
+from .models import Post, Comment, ImageModel
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm, UpdateUser, UpdateUserAfterClass
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -7,12 +7,12 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView, D
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
-
 @login_required
 def home(request):
     return render(request, 'home.html', {
         'posts' : Post.objects.all().order_by('-date_posted'),
-        'comments' : Comment.objects.all()
+        'comments' : Comment.objects.all().order_by('-date_posted'),
+        'images' : ImageModel.objects.all().order_by('-date_posted')
     })
 
 def clasaX(request):
@@ -100,20 +100,14 @@ def contactPage(request) :
 @login_required
 def anunturiPage(request) : 
     return render(request, 'anunturi.html', {
-        'posts' : Post.objects.all().order_by('-date_posted')
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'images' : ImageModel.objects.all().order_by('-date_posted')
     })
 
 @login_required
 def comentarii(request) : 
     return render(request, 'comment.html')
 
-
-
-class PostListView(ListView):
-    model = Post
-    template_name = 'home.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
 
 class PostdDetailView(DetailView):
     model = Post
@@ -185,6 +179,47 @@ class PostUpdateViewComment(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
 
 class PostdeleteViewComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Comment
+    template_name = 'postDelete.html'
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author : return True
+        else : return False
+
+
+
+
+
+class ImageCreateView(CreateView):
+    model = ImageModel
+    template_name = 'postNewImage.html'
+    fields = ['title', 'image', 'class4post']
+
+    def form_valid(self, form): 
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class ImageDetailView(DetailView):
+    model = ImageModel
+    template_name = 'post_detail.html'
+
+class ImageUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
+    model = ImageModel
+    template_name = 'postNewImage.html'
+    fields = ['title', 'image', 'class4post']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author : return True
+        else : return False
+
+class ImageDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = ImageModel
     template_name = 'postDelete.html'
     success_url = '/'
 
