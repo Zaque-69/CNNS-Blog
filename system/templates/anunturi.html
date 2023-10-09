@@ -2,19 +2,18 @@
 {% block content %}
 
 {% for post in posts %} 
-    {% if post.class4post == 'anunt'%}
+    {% if post.class4post == 'anunt'|slugify or post.class4post == 'comunitate'|slugify%}
         <!--<p>class 4 post : {{post.class4post}}</p>-->
         <div class = 'padding-1rem'>
-            <div class = 'container display-flex' style = 'justify-content: top; gap : .66rem;'>
-                <div class = 'display-flex' style = 'gap : 1rem; width : 4rem; padding-top : .66rem;'>
-                    <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
-                </div> 
-                <div class = 'w-100'>
-                    <div class = 'w-100 display-flex'>
+            <div class = 'container display-flex align-items-center justify-content-center' style = 'justify-content: top;  flex-direction: column;'>  <br>
+                <div style = 'width : 90%;' >
+                    <div class = 'w-100 display-flex align-items-center' style = 'gap : .33rem;'>
+                        <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
                         <h5 style = 'color : #552360;'>{{post.author}} </h5>
-                        <h5>‏‏‎ ‎-‏‏‎ ‎ </h5>  
+                        <h5>-</h5>  
                         <h5 style = 'color : gray;'>{{post.date_posted}}</h5> 
-                    </div><hr>
+                    </div>
+                    <hr>
                     <h2 id = 'elseBlock'>{{post.title}}</h2>
                     <p>{{post.content}}</p>
                     <div class="display-flex align-items-center justify-content-center" 
@@ -22,12 +21,13 @@
                         <a href="{% url 'post-update' post.id %}" 
                             class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Update</a>
                             
-                        <a href="{% url 'post-detail' post.id %}" class = 'zButon btnHover'>More</a>
+
 
                         <a href="{% url 'post-delete' post.id %}" 
                             class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Delete</a>
+                        <button class = 'zButon btnHover' onclick = 'document.getElementById("{{post.title}}").style.display = "block";'>Comments</button>
                     </div>
-                </div>
+                </div> <br>
                 <script>
                 if('{{user}}' == '{{post.author}}') {
                     document.querySelectorAll('.{{post.author}}{{post.id}}').forEach((e) =>{
@@ -37,6 +37,49 @@
                     catch{}}
                 </script>
             </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% for img in images %} 
+    {% if img.class4post == 'anunt'|slugify or img.class4post == 'comunitate'|slugify%}
+        <!--<p>class 4 post : {{post.class4post}}</p>-->
+        <div class = 'padding-1rem'>
+            <div class = 'container display-flex align-items-center justify-content-center' style = 'justify-content: top; flex-direction: column;'>  <br>
+                <div style = 'width : 90%;'>
+                    <div class = 'w-100 display-flex display-flex align-items-center' style = 'gap : .33rem;'>
+                        <img src="{{ img.author.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+                        <h5 style = 'color : #552360;'>{{img.author}} </h5>
+                        <h5>-</h5>  
+                        <h5 style = 'color : gray;'>{{img.date_posted}}</h5> 
+                    </div><hr>
+                    <h2 id = 'elseBlock'>{{img.title}}</h2>
+                    <div class = 'w-100 display-flex align-items-center justify-content-center'>
+                        <img src="/media/{{img.image}}" style = 'max-width: 100%; max-height: 40rem;'>
+                    </div> <br>
+                    <div class="display-flex align-items-center justify-content-center" 
+                        style = 'gap : 1rem;'>
+
+                        <a href="{% url 'image-update' img.id %}" 
+                            class = 'ifBlock zButon btnHover {{img.author}}{{img.id}}'>Update</a>
+
+                        
+
+                        <a href="{% url 'image-delete' img.id %}" 
+                            class = 'ifBlock zButon btnHover {{img.author}}{{img.id}}'>Delete</a>
+
+                    </div>
+                </div>
+                <script>
+                if('{{user}}' == '{{img.author}}') {
+                    document.querySelectorAll('.{{img.author}}{{img.id}}').forEach((e) =>{
+                        e.style.display = 'block';
+                    })
+                }else {try {document.getElementById('#elseBlock').css.display = 'block';}
+                    catch{}}
+                </script>
+            </div>
+            
         </div>
     {% endif %}
 {% endfor %}
