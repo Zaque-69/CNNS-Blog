@@ -1,4 +1,5 @@
 from django import forms
+from .models import Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -10,7 +11,7 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['username', 'password1', 'password2', 'email']
 
 class UpdateUser(forms.ModelForm):
-    
+
     email = forms.EmailField()
     class Meta : 
         model = User
@@ -21,3 +22,8 @@ class UpdateUserAfterClass(forms.ModelForm):
     class Meta : 
         model = User
         fields = ['last_name'] 
+
+class CreateComment(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['post', 'body', 'class4post']
