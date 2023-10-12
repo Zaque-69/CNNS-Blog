@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment
+from users.models import Profile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -22,8 +22,3 @@ class UpdateUserAfterClass(forms.ModelForm):
     class Meta : 
         model = User
         fields = ['last_name'] 
-
-class CreateComment(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['post', 'body', 'class4post']
