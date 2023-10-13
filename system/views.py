@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html', {
         'posts' : Post.objects.all().order_by('-date_posted'),
-        'comments' : Comment.objects.all()
+        'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
 def clasaX(request):
