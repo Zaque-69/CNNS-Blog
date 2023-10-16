@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <h1>X i1</h1>
 
@@ -6,18 +7,21 @@
     {% if post.class4post == 'JahLB6ny+in3NYZq/6qyGQ==' and user.is_superuser%}
         <!--<p>class 4 post : {{post.class4post}}</p>-->
         <div class = 'padding-1rem'>
-            <div class = 'container display-flex' style = 'justify-content: top; gap : .66rem;'>
-                <div class = 'display-flex' style = 'gap : 1rem; width : 4rem; padding-top : .66rem;'>
-                    <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 4rem; height : 4rem;'>
-                </div> 
-                <div class = 'w-100'>
-                    <div class = 'w-100 display-flex'>
+            <div class = 'container display-flex align-items-center justify-content-center' style = 'justify-content: top;  flex-direction: column;'>  <br>
+                <div style = 'width : 95%;'>
+                    <div class = 'w-100 display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
+                        <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 3.5rem; height : 3.5rem;'>
                         <h5 style = 'color : #552360;'>{{post.author}} </h5>
-                        <h5>‏‏‎ ‎-‏‏‎ ‎ </h5>  
+                        <h5>-</h5>  
                         <h5 style = 'color : gray;'>{{post.date_posted}}</h5> 
                     </div><hr>
                     <h2 id = 'elseBlock'>{{post.title}}</h2>
                     <p>{{post.content}}</p>
+                    {% if post.image %}
+                    <div class = 'display-flex align-items-center justify-content-center'>
+                        <img src = '/media/{{post.image}}' style = 'max-width: 100%;'>
+                    </div> <br>
+                    {% endif %}
                     <div class="display-flex align-items-center justify-content-center" 
                         style = 'gap : 1rem;'>
                         <a href="{% url 'post-update' post.id %}" 
@@ -27,8 +31,16 @@
 
                         <a href="{% url 'post-delete' post.id %}" 
                             class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Delete</a>
+
+                        <a class = ' zButon btnHover commentbutton' style = 'background-color : green;' onclick = "
+                            document.querySelector('.comment{{post.id}}').style.display = 'block';">
+                        <img src="{% static 'imagesForBase/comment.png' %}" style = 'height : 1.33rem;'></a>
+
+                        <a class = ' zButon btnHover commentbutton' style = 'background-color : red;' onclick = "
+                            document.querySelector('.comment{{post.id}}').style.display = 'none';">
+                        <img src="{% static 'imagesForBase/commentDelete.png' %}" style = 'height : 1.33rem;'></a>
                     </div>
-                </div>
+                </div> <br>
                 <script>
                 if('{{user}}' == '{{post.author}}') {
                     document.querySelectorAll('.{{post.author}}{{post.id}}').forEach((e) =>{
@@ -38,6 +50,52 @@
                     catch{}}
                 </script>
             </div>
+        </div>
+        <div class = 'w-100 display-flex align-items-center justify-content-center comment{{post.id}}' style = 'flex-direction: column; display : none;'>
+            {% for comment in post.comments.all%}
+            
+                {% if comment.author|slugify  == user.username or user.is_superuser%}
+                    {% if comment.post|slugify == post.title|slugify %}
+                    
+                    <div class = 'padding-1rem' style = 'width : 100%;'>
+                        <div class = 'container display-flex justify-content-center align-items-center' style = ' flex-direction: column; background-color: #d0c8cc; max-width : 884px;'>
+                            <div style = 'width : 90%;' > <br>
+                                <div class = 'w-100 display-flex align-items-center' style = 'gap : .33rem; justify-content: left;'>
+                                    <img src="{{ comment.author.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+                                    <h5 style = 'color : #552360;'>{{comment.author}} </h5>
+                                    <h5>-</h5>  
+                                    <h5 style = 'color : gray;'>{{comment.date_posted}}</h5> 
+                                </div>
+                                <p>{{comment.body}}</p>
+                                {% if comment.image %}
+                                <div class = 'display-flex align-items-center justify-content-center'>
+                                    <img src = '/media/{{post.image}}' style = 'max-width: 100%;'>
+                                </div> <br>
+                                {% endif %}
+                                <div class="display-flex align-items-center justify-content-center" 
+                                    style = 'padding : .33rem;gap : 1rem; background-color: #afa0b1; border-radius: 6px;' >
+                                    <a href="{% url 'comments-update' comment.id %}" 
+                                        class = 'ifBlock zButon btnHover {{comment.author}}{{comment.id}}'>Update</a>
+                            
+                                    <a href="{% url 'comments-detail' comment.id %}" class = 'zButon btnHover'>More</a>
+
+                                    <a href="{% url 'comments-delete' comment.id %}" 
+                                        class = 'ifBlock zButon btnHover {{comment.author}}{{comment.id}}'>Delete</a>
+                                </div><br>
+                            </div>
+                            <script>
+                                if('{{user}}' == '{{comment.author}}') {
+                                    document.querySelectorAll('.{{comment.author}}{{comment.id}}').forEach((e) =>{
+                                        e.style.display = 'block';
+                                    })
+                                }else {try {document.getElementById('#elseBlock').css.display = 'block';}
+                                    catch{}}
+                            </script>
+                        </div> 
+                    </div>
+                    {% endif %}
+            {% endif %}
+        {% endfor %}
         </div>
     {% endif %}
 {% endfor %}
