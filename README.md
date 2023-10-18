@@ -18,4 +18,5 @@
   # Runserver :
     > python manage.py makemigrations
     > python manage.py migrate
+    > python manage.py createsuperuser ( your data )
     > python manage.py runserver
