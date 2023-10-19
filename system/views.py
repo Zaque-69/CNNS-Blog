@@ -56,8 +56,8 @@ def loginSystem(request):
 
 def SelectClass(request):
     form = UpdateUserAfterClass()
-    listOfCodes = ["HKKnGCU3LJv5f3rd1TUrPQ==", "JahLB6ny+in3NYZq/6qyGQ==",
-                       "cc5MScnZUesxuthyWo52iQ==", "pbWhFEPPPbjWSxoLpYhSqg=="]
+    listOfCodes = ["mxWLOPyckongDCJGBpQK", "eRstQPMlfBoYsLBVZgMW",
+                    "QFdINEQehJkVrcHZtUJs", "amcYvyDjbIjNAWyLEwJG"]
     if request.method == 'POST':
         ok = 0
         form = UpdateUserAfterClass(request.POST, instance = request.user)
@@ -156,7 +156,7 @@ class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class CommentCreateView(CreateView):
     model = Comment
     template_name = 'postNewComment.html'
-    fields = ['post', 'body', 'class4post', 'image']
+    fields = ['post', 'body', 'class4post']
 
     def form_valid(self, form): 
         form.instance.author = self.request.user
@@ -169,7 +169,7 @@ class PostdDetailViewComment(DetailView):
 class PostUpdateViewComment(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Comment
     template_name = 'postNewComment.html'
-    fields = ['post', 'body', 'class4post', 'image']
+    fields = ['post', 'body', 'class4post']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
