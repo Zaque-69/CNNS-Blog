@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>X i1</h1>
-
+<h1>Filter for posts</h1>
+<br>
+<div class = 'w-100 display-flex align-items-center justify-content-center' style = 'gap : 1rem; flex-wrap: wrap;'>
+    <select style = 'max-width : 49.5rem; width : 50%; height : 2rem; background-color: #2e203c;
+        color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'> 
+        <option>-</option>
+        <option value = 'anunt'>ANUNT ( postare vizibila de toata lumea )</option>
+        <option value = 'mxWLOPyckongDCJGBpQK'>9I1</option>
+        <option value = 'eRstQPMlfBoYsLBVZgMW'>10I1</option>
+        <option value = 'QFdINEQehJkVrcHZtUJs'>11I1</option>
+        <option value = 'amcYvyDjbIjNAWyLEwJG'>12I1</option>
+    </select>
+    <button id = 'filterButton'>Filter</button>
+</div><br>
 {% for post in posts %} 
-    {% if post.class4post == 'JahLB6ny+in3NYZq/6qyGQ==' and user.is_superuser%}
-        <!--<p>class 4 post : {{post.class4post}}</p>-->
-        <div class = 'padding-1rem'>
+    {% if user.is_superuser%}
+        <div class = 'padding-1rem {{post.class4post}} postDisplay' >
             <div class = 'container display-flex align-items-center justify-content-center' style = 'justify-content: top;  flex-direction: column;'>  <br>
                 <div style = 'width : 95%;'>
                     <div class = 'w-100 display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
@@ -53,10 +64,8 @@
         </div>
         <div class = 'w-100 display-flex align-items-center justify-content-center comment{{post.id}}' style = 'flex-direction: column; display : none;'>
             {% for comment in post.comments.all%}
-            
                 {% if comment.author|slugify  == user.username or user.is_superuser%}
                     {% if comment.post|slugify == post.title|slugify %}
-                    
                     <div class = 'padding-1rem' style = 'width : 100%;'>
                         <div class = 'container display-flex justify-content-center align-items-center' style = ' flex-direction: column; background-color: #d0c8cc; max-width : 884px;'>
                             <div style = 'width : 90%;' > <br>
@@ -99,5 +108,15 @@
         </div>
     {% endif %}
 {% endfor %}
+
+<script>
+    document.getElementById('filterButton').onclick = function(){
+        val = document.querySelector('select').value; //console.log(val);
+        document.querySelectorAll('.HKKnGCU3LJv5f3rd1TUrPQ').forEach((e) =>{
+            console.log('da');
+        })
+        //postDisplay
+    }
+</script>
 
 {% endblock %}
