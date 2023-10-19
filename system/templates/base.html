@@ -12,9 +12,7 @@
 	<link rel="stylesheet" href="{% static 'css/hover.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
-<body>
-    {% block tit %}
-    {% endblock %}
+<body>{% block tit %}{% endblock %}
     </div>
     <nav style = 'background-color: #552360;' class="w-100 display-flex align-items-center justify-content-center">   
         <div style = "width : 16rem; padding : .4rem;" 
@@ -39,11 +37,9 @@
         </div>
     </nav>
     <br>
-    {% block content %} 
-    
-    {% endblock %}
+    {% block content %}{% endblock %}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src = "{% static 'js/index.js' %}"></script>
-
+<script src = "{% static 'js/filter.js' %}"></script>
 </html>
