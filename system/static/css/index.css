@@ -8,9 +8,9 @@ a{
     text-decoration: none;
     font-size : 1rem;
     display : flex;
-    text-align : center;
     align-items : center;
     justify-content : center;
+    cursor : pointer;
 
 }
 hr{
@@ -29,7 +29,6 @@ button{
     animation : gradient 15s ease infinite; 
     color : #190a2a;
     transition : .33s;
-    text-align : center;
     letter-spacing: 2px;
 }
 h1{
@@ -50,12 +49,7 @@ nav{
     background-color : #ede9e2;
     border-radius : .33rem;
 }
-.container2 {
-    margin: 0 auto;
-    max-width : 882px;
-    background-color : #ede9e2;
-    border-radius : .33rem;
-}
+
 .mod-width{
     max-width : 30rem; 
     width : 100%; 
@@ -80,12 +74,7 @@ form{
 
     display : flex;
     background-color : #1E2D49;
-}
-.daj{
-    display : flex;
-    align-items : center;
-    justify-content : center;
-    width : 100%;
+   
 }
 input{
     max-width : 50rem;
@@ -216,7 +205,7 @@ span{
 select{
     background-color : #2C203B;
     color : white;
-    height : 1.75rem;
+    height : 2rem;
     border-radius : .5rem;
     width : 100%;
 }
