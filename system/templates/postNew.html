@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
 <div class = 'container display-flex align-items-center justify-content-center' style = 'flex-wrap: wrap; background-color: #c5b9c1;'>
     <br>
     <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem;padding-left : 5rem;'>
@@ -11,7 +9,6 @@
     <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' enctype="multipart/form-data">
         {% csrf_token %} <br>
         <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
-
         <textarea name="title" style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
             color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
             class = 'display-flex align-items-center justify-content-center'
@@ -20,14 +17,20 @@
             <textarea id="w3review" name="content" placeholder = '  Content'
                 style = 'max-width : 49.5rem; width : 100%; height : 10rem; background-color: #2e203c;
                 color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'>{{post.content}}</textarea>
-        </div><br>
+        </div>
         {% if user.is_superuser %}
-        
-        <textarea name="class4post" style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
-            color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
-            class = 'display-flex align-items-center justify-content-center'
-            placeholder = '  Class'>  {{post.class4post}}</textarea> <br>
+        <br>
+        <select name="class4post" id="cars" style = 'max-width : 49.5rem; width : 100%; height : 2rem; background-color: #2e203c;
+            color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'> 
+            <option>-</option>
+            <option value = 'anunt'>ANUNT ( postare vizibila de toata lumea )</option>
+            <option value = 'mxWLOPyckongDCJGBpQK'>9I1</option>
+            <option value = 'eRstQPMlfBoYsLBVZgMW'>10I1</option>
+            <option value = 'QFdINEQehJkVrcHZtUJs'>11I1</option>
+            <option value = 'amcYvyDjbIjNAWyLEwJG'>12I1</option>
+        </select> <br>
         {% else %}
+        <br>
         <textarea name="class4post" id = 'class4post' style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
             color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem; display : none;'
             class = 'display-flex align-items-center justify-content-center'></textarea> <br>
@@ -37,7 +40,6 @@
         <span>Z4que ® all Rights Reserved</span>
     </form>
 </div>
-
 <script>
     try{document.getElementById('class4post').value = '{{user.last_name}}';} catch{}
     document.querySelectorAll('textarea').forEach((e) =>{
@@ -45,5 +47,4 @@
         if ( e.value == '  ') e.value = '';
     })
 </script>
-
 {% endblock %}
