@@ -1,3 +1,8 @@
+
+
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled.png">
+
+
 # ᴡʜᴀᴛ ɪꜱ ᴄɴɴꜱ? :
   C. N. N. S. is a top highschool in Ploiesti, Prahova, Romania;
 
