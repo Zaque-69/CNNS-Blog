@@ -4,18 +4,41 @@
 
 {% block content %}
 
-<div class = 'container display-flex align-items-center justify-content-center' style = 'flex-wrap: wrap; background-color: #c5b9c1;'>
-    <br>
-    <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem;padding-left : 5rem;'>
-        <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
-        <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
+<div style = 'padding : 1rem'>
+    <div class = 'container display-flex align-items-center justify-content-center' style = 'padding : 1rem; flex-wrap: wrap; background-color: #c5b9c1;'>
+        <br>
+        <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem;padding-left : 5rem;'>
+            <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+            <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
+        </div>
+        <form method="POST" action="" enctype="multipart/form-data" class = 'w-100 align-items-center justify-content-center' style = 'flex-direction: column;'>
+            {% csrf_token %}
+            {{form|crispy}}
+            <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button>
+            <br> <p>Z4que ® all Rights Reserved</p>
+        </form>
     </div>
-    <form method="POST" action="" enctype="multipart/form-data" class = 'w-100 align-items-center justify-content-center' style = 'flex-direction: column;'>
-        {% csrf_token %}
-        {{form|crispy}}
-        <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button>
-        <br> <p>Z4que ® all Rights Reserved</p>
-    </form>
+</div>
+<br>
+<div style = 'padding : 1rem; '>
+    <div class = 'display-flex align-items-center justify-content-center w-100 '>
+        <div style = 'background-color: #c5b9c1; padding : 1rem; flex-direction: column;' class = 'container display-flex align-items-center justify-content-center w-50'>
+            <h1><span style = 'color : blue'>🇬🇧</span> Notes and clarifications</h1>
+            <span style = 'padding : 1rem; text-align: center;'>Please be careful when selecting the post for which you want the desired comment. In any case, if you select
+                wrong post, your <b>comment will not appear for anyone in another class thanks to a feature
+                which does not allow a comment to be requested for a non-participating class</b>. ~Z4que
+            </span>
+        </div>
+    </div><br>
+    <div class = 'display-flex align-items-center justify-content-center w-100 '>
+        <div style = 'background-color: #c5b9c1; padding : 1rem; flex-direction: column;' class = 'container display-flex align-items-center justify-content-center w-50'>
+            <h1><span style = 'color : red;'>🇷🇴</span> Note si precizari</h1>
+            <span style = 'padding : 1rem; text-align: center;'>Vă rugăm să fiți atenți când selectați postarea pentru care vreți comentariul dorit. În orice caz, dacă selectați
+                postarea greșită, <b>comentariu dumneavoastră nu va apărea pentru nici o persoană din altă clasă mulțumită unei funcții 
+                care nu permite cerearea unui comentariu pentru o clasă neparticipantă</b>. ~Z4que
+            </span>
+        </div>
+    </div>
 </div>
 
 <script>
