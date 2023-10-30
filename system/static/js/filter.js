@@ -1,10 +1,14 @@
-const listOfClasses = ['mxWLOPyckongDCJGBpQK', 'eRstQPMlfBoYsLBVZgMW', 'QFdINEQehJkVrcHZtUJs', 'amcYvyDjbIjNAWyLEwJG', 'anunt'];
+const listOfClasses = ['IXi1', 'Xi1', 'XIi1', 'XIIi1', 'anunt']; list = [];
+    fetch('../static/js/main.json').then(response => response.json()).then(data => {
+        for(let i = 0; i < listOfClasses.length; i++) {
+            list.push(eval(`data.${listOfClasses[i]}`));
+        }
+    });
 document.getElementById('filterButton').addEventListener('click', function(){
-    for (var i = 0; i < listOfClasses.length; i++) {
-        document.querySelectorAll('.' + listOfClasses[i]).forEach((e) =>{
-            if ( listOfClasses[i] == document.querySelector('select').value ) e.style.display = 'block';
+    for (var i = 0; i < list.length; i++) {
+        document.querySelectorAll('.' + list[i]).forEach((e) =>{
+            if ( list[i] == document.querySelector('select').value ) e.style.display = 'block';
             else e.style.display = 'none';
         })
     }
 })
-console.log('succes');
