@@ -30,3 +30,4 @@ urlpatterns = [
     path('classroom/', views.SelectClass, name = 'ClassRoom'),
     path('anunturi/', views.anunturiPage, name = 'anunturi'),
 ]
+ 
