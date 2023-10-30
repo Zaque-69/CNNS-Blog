@@ -12,19 +12,22 @@
   * 💬 Comment System for specific posts; <br />
   * ⚗️ Filter for posts ( only admin ) <br />
   * 🌎 Comunity page for everyone ! <br />
+  
 
-#COMMANDS :
-
-  #PIP :
-    > pip3 install django
-    > pip3 install django-crispy-forms
-    > pip install crispy-bootstrap5
+PIP :
+ ```
+   > pip3 install django
+   > pip3 install django-crispy-forms
+   > pip install crispy-bootstrap
+```
     
-  #RUNSERVER:
-    > python manage.py makemigrations
-    > python manage.py migrate
-    > python manage.py createsuperuser ( your data )
-    > python manage.py runserver
+RUNSERVER:
+```
+   > python manage.py makemigrations
+   > python manage.py migrate
+   > python manage.py createsuperuser ( your data )
+   > python manage.py runserver
+```
 
 
 <img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled2.png">
