@@ -3,15 +3,20 @@
 <img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled.png">
 
 
-# ᴡʜᴀᴛ ɪꜱ ᴄɴɴꜱ? :
-  C. N. N. S. is a top highschool in Ploiesti, Prahova, Romania;
+#WHAT IS CNNS :
+  * CNNS is a top highschool in Ploiesti, Prahova, Romania;
+  * 
 
-# ᴀʙᴏᴜᴛ:
-  ○ This is a website built at the level of highschool;
-  
-# ꜰᴇᴀᴛᴜʀᴇꜱ :
-  ○ 👥 Login and register systems; <br />
-  ○ 💼 Posting information as a teacher or a student;
+#FDEATURES :
+  * 👥 Login and register systems; <br />
+  * 💼 Posting information as a teacher or a student; <br />
+  * 💬 Comment System for specific posts; <br />
+  * ⚗️ Filter for posts ( only admin ) <br />
+  * 🌎 Comunity page for everyone ! <br />
+
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled1.png">
+
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitle2.png">
 
 # Commands :
 
