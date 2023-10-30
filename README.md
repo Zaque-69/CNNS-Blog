@@ -13,10 +13,6 @@
   * ⚗️ Filter for posts ( only admin ) <br />
   * 🌎 Comunity page for everyone ! <br />
 
-<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled2.png">
-
-<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled3.png">
-
 #COMMANDS :
 
   #PIP :
@@ -29,3 +25,9 @@
     > python manage.py migrate
     > python manage.py createsuperuser ( your data )
     > python manage.py runserver
+
+
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled2.png">
+
+
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNSBlog/blob/main/readmepics/Untitled3.png">
