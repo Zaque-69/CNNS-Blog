@@ -13,6 +13,11 @@ a{
     cursor : pointer;
 
 }
+.daj{
+    display : flex;
+    align-items : center;
+    justify-content : center;
+}
 hr{
     border : .5px solid #b9a8b6;
     
