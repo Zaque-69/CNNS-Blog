@@ -1,4 +1,3 @@
-import json
 from .models import Post, Comment
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm, UpdateUser, UpdateUserAfterClass
@@ -15,6 +14,7 @@ def home(request):
         'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
+@login_required
 def clasaX(request):
     return render(request, 'clasaX.html', {
         'posts' : Post.objects.all().order_by('-date_posted')
@@ -28,7 +28,7 @@ def register(request):
 
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
-
+        
         form.save()
         usern = request.POST.get('username')
         passw = request.POST.get('password1')
@@ -57,7 +57,8 @@ def loginSystem(request):
 def SelectClass(request):
     form = UpdateUserAfterClass()
     listOfCodes = ["mxWLOPyckongDCJGBpQK", "eRstQPMlfBoYsLBVZgMW",
-                    "QFdINEQehJkVrcHZtUJs", "amcYvyDjbIjNAWyLEwJG"]
+                    "QFdINEQehJkVrcHZtUJs", "amcYvyDjbIjNAWyLEwJG",
+                    'RQRYehryuCqGGvTCJpek']
     if request.method == 'POST':
         ok = 0
         form = UpdateUserAfterClass(request.POST, instance = request.user)
@@ -66,13 +67,9 @@ def SelectClass(request):
             if code == requestInvitation : ok = 1
 
         if ok == 1 : 
-            print(json.loads)
             if form.is_valid() : 
-                with open("./system/static/js/main.json", "r") as f: 
-                    requestInvitation = json.load(f)[requestInvitation]
-                print(requestInvitation)
                 form.save()
-            return redirect('home')
+                return redirect('home')
         #else : messages.info(request, "Three credits remain in your account.")
 
     return render(request, 'classroom.html', {
@@ -153,10 +150,17 @@ class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author : return True
         else : return False
 
+
+
+ 
+
+
+
+
 class CommentCreateView(CreateView):
     model = Comment
     template_name = 'postNewComment.html'
-    fields = ['post', 'body', 'class4post']
+    fields = ['idComment', 'body', 'class4post', 'image']
 
     def form_valid(self, form): 
         form.instance.author = self.request.user
