@@ -4,6 +4,12 @@
 
 {% block content %}
 
+{% for post in posts %}
+    <script>
+        console.log("aici {{post.class4post}}");
+    </script>
+{% endfor %}
+
 <div style = 'padding : 1rem'>
     <div class = 'container display-flex align-items-center justify-content-center' style = 'padding : 1rem; flex-wrap: wrap; background-color: #c5b9c1;'>
         <br>
@@ -12,8 +18,11 @@
             <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
         </div>
         <form method="POST" action="" enctype="multipart/form-data" class = 'w-100 align-items-center justify-content-center' style = 'flex-direction: column;'>
-            {% csrf_token %}
-            {{form|crispy}}
+            {% csrf_token %} <br>
+            <textarea name = 'idComment' placeholder = 'Id Comment ( Only the number )'></textarea><br>
+            <textarea name = 'body' style = 'height : 10rem;' placeholder = 'body'></textarea><br>
+            <textarea name = 'class4post' style = 'display : none;'>{{user.last_name}}</textarea><br>
+            <input type="file" name="image" class="form-control" accept="image/*" id="id_image"><br>
             <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button>
             <br> <p>Z4que ® all Rights Reserved</p>
         </form>
@@ -41,21 +50,4 @@
     </div>
 </div>
 
-<script>
-    document.getElementById('div_id_body').style.width = '100%';
-    document.getElementById('div_id_body').style.paddingBottom = '1rem';
-    document.getElementById('div_id_post').style.width = '80%';
-    document.getElementById('div_id_body').classList.add("daj");
-    document.getElementById('div_id_class4post').style.display = 'none';
-    document.querySelector('.requiredField').innerHTML = 'Post : ';
-    document.getElementById('div_id_post').style.padding = '1rem';
-    document.querySelector('textarea').style.height = '10rem';
-    document.querySelector('textarea').style.maxWidth = '49.5rem';
-    document.querySelector('textarea').style.width = '100%'; 
-
-    document.querySelectorAll('label').forEach((e) =>{
-        e.style.display = 'none';
-    })
-    document.querySelector('.textinput ').setAttribute('value', '{{user.last_name}}');
-</script>
 {% endblock %}
