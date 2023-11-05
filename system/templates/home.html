@@ -100,7 +100,8 @@
         </div>
         
        {% for comment in comments %}
-            {% if comment.idComment|slugify == post.id|slugify and user.username|slugify == comment.author|slugify %}
+            {% if comment.idComment|slugify == post.id|slugify %}
+                {%if user.username|slugify == comment.author|slugify or user.is_superuser%}
             <div class = 'display-flex align-items-center justify-content-center'>
                 <div class = ' comment{{comment.idComment}}' style = 'display : none; width : 85%;'>
                     <div class = ' container display-flex align-items-center justify-content-center ' style = 'justify-content: top;  flex-direction: column; max-width : 882px; width: 100%; background-color: #dbd3dc;'>  <br>
@@ -135,7 +136,7 @@
                         </script>
                 </div>
             </div> <br>
-            
+            {% endif %}
             {% endif %}
        {% endfor %}
 
