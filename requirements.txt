@@ -268,6 +268,7 @@ pytorch-lightning==2.0.8
 pytube==12.1.0
 pytweening==1.0.4
 pytz==2023.3.post1
+pywin32==305
 pywin32-ctypes==0.2.0
 pywinpty==2.0.11
 PyYAML==6.0
