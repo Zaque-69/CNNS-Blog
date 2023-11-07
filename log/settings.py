@@ -141,5 +141,5 @@ LOGIN_URL = 'log'
 import dj_database_url
 
 DATABASES = {
-    'defaulf' : dj_database_url.parse(env('DATABASE_URL'))
+    'default' : dj_database_url.parse(env('DATABASE_URL'))
 }
