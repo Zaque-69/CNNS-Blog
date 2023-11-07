@@ -8,3 +8,4 @@ sqlparse==0.4.3
 tzdata==2022.7
 whitenoise==6.2.0
 pillow==9.5.0
+mimetype==0.1.5
