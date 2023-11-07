@@ -97,8 +97,7 @@ def contactPage(request) :
 @login_required
 def anunturiPage(request) : 
     return render(request, 'anunturi.html', {
-        'posts' : Post.objects.all().order_by('-date_posted'),
-        'comments' : Comment.objects.all().order_by('-date_posted')
+        'posts' : Post.objects.all().order_by('-date_posted')
     })
 
 @login_required
@@ -150,13 +149,6 @@ class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
         if self.request.user == post.author : return True
         else : return False
-
-
-
- 
-
-
-
 
 class CommentCreateView(CreateView):
     model = Comment
