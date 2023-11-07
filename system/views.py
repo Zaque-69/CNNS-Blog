@@ -150,6 +150,13 @@ class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author : return True
         else : return False
 
+
+
+ 
+
+
+
+
 class CommentCreateView(CreateView):
     model = Comment
     template_name = 'postNewComment.html'
