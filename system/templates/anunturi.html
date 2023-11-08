@@ -20,7 +20,7 @@
                     </div> <br>
                     {% endif %}
                     <div class="display-flex align-items-center justify-content-center" 
-                        style = 'gap : .33rem;'>
+                        style = 'gap : .66rem;'>
                         <a href="{% url 'post-update' post.id %}" class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Update</a>
                         <a href="{% url 'post-detail' post.id %}" class = 'zButon btnHover'>More</a>
                         <a href="{% url 'post-delete' post.id %}" class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Delete</a>
