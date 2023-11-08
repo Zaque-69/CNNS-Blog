@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
-
 import environ
 
 env = environ.Env()
