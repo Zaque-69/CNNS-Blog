@@ -21,7 +21,7 @@
         <div class = 'padding-1rem {{post.class4post}}'>
             <div class = ' container display-flex align-items-center justify-content-center ' style = 'justify-content: top;  flex-direction: column;'>  <br>
                 <div style = 'width : 95%;'>
-                    <div class = 'w-100 display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
+                    <div class = 'display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
                         <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 3.5rem; height : 3.5rem;'>
                         <h5 style = 'color : #552360;'>{{post.author}} </h5>
                         <h5>-</h5>  
@@ -55,8 +55,6 @@
                                 e.style.display = 'none';
                             })">
                         <img src="{% static 'imagesForBase/commentDelete.png' %}" style = 'height : 1.33rem;'></a>
-
-                       
                     </div>
                 </div> <br>
                 <script>
@@ -69,8 +67,6 @@
                 </script>
             </div>
         </div>
-        
-       
        {% for comment in comments %}
             {% if comment.idComment|slugify == post.id|slugify %}
             <div class = 'padding-1rem comment{{comment.idComment}}' style = 'display : none;'>
@@ -89,7 +85,6 @@
                             </span>
                         </div><hr>
                         <p>{{comment.body}}</p>
-                           
                         </div>
                     </div> <br>
                     <script>
@@ -101,13 +96,8 @@
                             catch{}}
                     </script>
                 </div>
-            
             {% endif %}
        {% endfor %}
-
         {% endif %}
     {% endfor %}
-
-
-
 {% endblock %}
