@@ -17,7 +17,8 @@ def home(request):
 @login_required
 def clasaX(request):
     return render(request, 'clasaX.html', {
-        'posts' : Post.objects.all().order_by('-date_posted')
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
 def error(request) : 
@@ -97,7 +98,8 @@ def contactPage(request) :
 @login_required
 def anunturiPage(request) : 
     return render(request, 'anunturi.html', {
-        'posts' : Post.objects.all().order_by('-date_posted')
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
 @login_required
