@@ -35,21 +35,17 @@
                     </div> <br>
                     {% endif %}
                     <div class="display-flex align-items-center justify-content-center" 
-                        style = 'gap : .33rem;'>
+                        style = 'gap : .66rem;'>
                         <a href="{% url 'post-update' post.id %}" 
                             class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Update</a>
-                            
                         <a href="{% url 'post-detail' post.id %}" class = 'zButon btnHover'>More</a>
-
                         <a href="{% url 'post-delete' post.id %}" 
                             class = 'ifBlock zButon btnHover {{post.author}}{{post.id}}'>Delete</a>
-
                         <a class = ' zButon btnHover commentbutton' style = 'background-color : green;' onclick = "
                             document.querySelectorAll('.comment{{post.id}}').forEach((e) =>{
                                 e.style.display = 'Block';
                             })">
                         <img src="{% static 'imagesForBase/comment.png' %}" style = 'height : 1.33rem;'></a>
-
                         <a class = ' zButon btnHover commentbutton' style = 'background-color : red;' onclick = "
                             document.querySelectorAll('.comment{{post.id}}').forEach((e) =>{
                                 e.style.display = 'none';
