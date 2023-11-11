@@ -144,3 +144,6 @@ import dj_database_url
 DATABASES = {
     'default' : dj_database_url.parse(env('DATABASE_URL'))
 }
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'staticfiles')
+]
