@@ -41,7 +41,7 @@
             <div class = 'display-flex align-items-center justify-content-center w-100' style = 'padding : 1rem; gap : 1rem;  flex-wrap: wrap;'>
                 <a href = '{% url "post-new" %}' class = 'zButon btnHover'>New Post</a>
                 <a href = '{% url "comment-new" %}' class = 'zButon btnHover'>New Comment</a>
-                {%if user.is_superuser%} <a href = '{% url "clasaX" %}'><img src = '{% static "imagesForBase/filter.png" %}'></a>{%endif%}
+                {%if user.is_superuser%} <a href = '{% url "clasaX" %}'><img src = '{% static "imagesForBase/filter.png" %}' style = 'height : 1rem;'></a>{%endif%}
             </div>
         </div>
     </div>
