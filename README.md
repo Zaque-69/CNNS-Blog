@@ -13,20 +13,10 @@
   * ⚗️ Filter for posts ( only admin ) <br />
   * 🌎 Comunity page for everyone ! <br />
   
-
-PIP :
- ```
-   > pip3 install django
-   > pip3 install django-crispy-forms
-   > pip install crispy-bootstrap
-```
     
-RUNSERVER:
+#OPTIONAL COMMAND IF YOU RUN IN LOCAL SQLITE DATABASE:
 ```
-   > python manage.py makemigrations
-   > python manage.py migrate
    > python manage.py createsuperuser ( your data )
-   > python manage.py runserver
 ```
 
 
