@@ -21,8 +21,6 @@ def clasaX(request):
         'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
-def error(request) : 
-    return render(request, '404.html')
 
 def register(request):
     form = UserRegistrationForm()
@@ -30,7 +28,8 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         
-        form.save()
+        try : form.save()
+        except : pass
         usern = request.POST.get('username')
         passw = request.POST.get('password1')
         user = authenticate(request, username = usern, password = passw)
