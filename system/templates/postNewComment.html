@@ -16,7 +16,7 @@
             <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
         </div>
         <form method="POST" action="" enctype="multipart/form-data" class = 'w-100 align-items-center justify-content-center' style = 'flex-direction: column;'>
-            {% csrf_token %} <br> <h3 style = 'color : red;'>Upload images : <b><a href = 'https://imgbb.com/'>HERE</a></b> and paste DIRECT LINK in the field.</h3>
+            {% csrf_token %} <br> <br> <a atyle = 'color : #a8132f'><h3>UPLOAD IMAGES HERE. PASTE ONLY DIRECT LINK IN THE FIELD</h3></a> <br>
             <textarea name = 'idComment' placeholder = 'Id Comment ( Only the number )'></textarea><br>
             <textarea name = 'body' style = 'height : 10rem;' placeholder = 'body'></textarea><br>
             <textarea name = 'class4post' style = 'display : none;'>{{user.last_name}}</textarea><br>
