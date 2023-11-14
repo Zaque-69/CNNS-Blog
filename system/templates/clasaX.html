@@ -22,7 +22,7 @@
             <div class = ' container display-flex align-items-center justify-content-center ' style = 'justify-content: top;  flex-direction: column;'>  <br>
                 <div style = 'width : 95%;'>
                     <div class = 'display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
-                        <img src="{{ post.author.profile.image.url }}" class = 'round' style = 'width : 3.5rem; height : 3.5rem;'>
+                        <img src="{{ post.author.profile.image.url }}" alt = 'Author IMG' class = 'round' style = 'width : 3.5rem; height : 3.5rem;'>
                         <h5 style = 'color : #552360;'>{{post.author}} </h5>
                         <h5>-</h5>  
                         <h5 style = 'color : gray;'>{{post.date_posted}}</h5> 
@@ -45,12 +45,12 @@
                             document.querySelectorAll('.comment{{post.id}}').forEach((e) =>{
                                 e.style.display = 'Block';
                             })">
-                        <img src="{% static 'imagesForBase/comment.png' %}" style = 'height : 1.33rem;'></a>
+                        <img src="{% static 'imagesForBase/comment.png' %}" alt = 'Show Comments' style = 'height : 1.33rem;'></a>
                         <a class = ' zButon btnHover commentbutton' style = 'background-color : #a8132f;' onclick = "
                             document.querySelectorAll('.comment{{post.id}}').forEach((e) =>{
                                 e.style.display = 'none';
                             })">
-                        <img src="{% static 'imagesForBase/commentDelete.png' %}" style = 'height : 1.33rem;'></a>
+                        <img src="{% static 'imagesForBase/commentDelete.png' %}" alt = 'Hide Comments' style = 'height : 1.33rem;'></a>
                     </div>
                 </div> <br>
                 <script>
@@ -70,7 +70,7 @@
                     <div style = 'width : 95%;'>
                         <div class = 'w-100 display-flex align-items-center' style = 'justify-content : left; gap : .33rem;'>
                             <span style = 'width : 80%; display : flex;'>
-                                <img src="{{ comment.author.profile.image.url }}" class = 'round' style = 'width : 2.5rem; height : 2.5rem;'>
+                                <img src="{{ comment.author.profile.image.url }}" alt = 'Author IMG' class = 'round' style = 'width : 2.5rem; height : 2.5rem;'>
                                 <h5 style = 'color : #552360;'>{{comment.author}} </h5><h5>-</h5>  
                                 <h5 style = 'color : gray; text-align : center;'>{{comment.date_posted}}</h5> 
                             </span>
