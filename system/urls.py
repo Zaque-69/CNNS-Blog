@@ -8,7 +8,6 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name = 'home'),
-    path('error/', views.error, name = 'errorLog'),
     path('post/new/', PostCreateView.as_view(), name = 'post-new'),
     path('comment/new/', CommentCreateView.as_view(), name = 'comment-new'),
 
