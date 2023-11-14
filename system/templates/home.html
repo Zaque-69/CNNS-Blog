@@ -61,7 +61,7 @@
                     <p>{{post.content}}</p>
                     {% if post.image %}
                     <div class = 'display-flex align-items-center justify-content-center'>
-                        <img src = '{{post.image}}' style = 'max-width: 100%; border-radius : .33rem;'>
+                        <img src = '{{post.image}}' alt = '{{post.image}}' style = 'max-width: 100%; border-radius : .33rem;'>
                     </div> <br>
                     {% endif %}
                     <div class="display-flex align-items-center justify-content-center" 
@@ -113,7 +113,7 @@
                             {% if comment.image %}
                                 <br>
                                     <div class = 'display-flex align-items-center justify-content-center'>
-                                        <img src = '{{comment.image}}' style = 'border-radius: .33rem; width : 100%;'>
+                                        <img src = '{{comment.image}}' alt = '{{post.image}}' style = 'border-radius: .33rem; width : 100%;'>
                                     </div>
                                 <br>    
                             {% endif %}
