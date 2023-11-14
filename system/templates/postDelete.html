@@ -5,7 +5,7 @@
 <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' style = 'background: none;'>
     {% csrf_token %}
     <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
-    <span>Esti sigur ce vrei sa stergi postarea '{{object.title}}' ? </span> <br>
+    <span>Are you sure you want to delete this post / comment? </span> <br>
     <div class="display-flex align-items-center justify-content-center" style = 'gap : 1rem;'>
         <button type = 'submit' name = 'Delete' class = 'btnHover zButon'>Delete</button>
         <a href = '{% url "home" %}' class = 'zButon btnHover'>Back</a>
