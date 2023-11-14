@@ -74,7 +74,7 @@
                                 <h5 style = 'color : #552360;'>{{comment.author}} </h5><h5>-</h5>  
                                 <h5 style = 'color : gray; text-align : center;'>{{comment.date_posted}}</h5> 
                             </span>
-                            <span style = ' border : 5px solid orange; justify-content: end; gap : 1rem;' class="display-flex align-items-center">
+                            <span style = 'justify-content: end; gap : 1rem;' class="display-flex align-items-center">
                                 <a href="{% url 'comments-detail' comment.id %}" class = 'zButon btnHover'>More</a>
                                 <a href="{% url 'comments-delete' comment.id %}" 
                                     class = 'ifBlock zButon btnHover {{comment.author}}{{comment.id}}'>Delete</a>
