@@ -19,11 +19,11 @@
             {% csrf_token %} <br>
             <textarea name = 'idComment' placeholder = 'Id Comment ( Only the number )'></textarea><br>
             <textarea name = 'body' style = 'height : 10rem;' placeholder = 'body'></textarea><br>
+            <textarea name = 'class4post' style = 'display : none;'>{{user.last_name}}</textarea><br>
+            <input type="text" name="image" id="id_image" placeholder = 'URL IMAGE '><br>
             <div class = 'display-flex align-items-center justify-content-center' style = 'text-align : center;'>
                  <a atyle = 'color : #a8132f' href = 'https://postimages.org/'><h3 style = 'color : #a8132f'>UPLOAD IMAGES HERE. PASTE ONLY DIRECT LINK IN THE FIELD</h3></a> 
              </div> <br>
-            <textarea name = 'class4post' style = 'display : none;'>{{user.last_name}}</textarea><br>
-            <input type="text" name="image" id="id_image" placeholder = 'URL IMAGE ( https://example.com ) ( UPLOAD IMAGES ON https://postimg.cc/ )'><br>
             <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button>
             <br> <p>Z4que ® all Rights Reserved</p>
         </form>
