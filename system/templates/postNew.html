@@ -7,7 +7,7 @@
             <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
         </div>
         <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' enctype="multipart/form-data">
-            {% csrf_token %} <br> <a atyle = 'color : #a8132f' href = 'https://postimages.org/'><h3 style = 'color : #a8132f'>UPLOAD IMAGES HERE. PASTE ONLY DIRECT LINK IN THE FIELD</h3></a> <br>
+            {% csrf_token %} <br>
             <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
             <textarea name="title" style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
                 color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
@@ -36,6 +36,9 @@
                 color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem; display : none;'
                 class = 'display-flex align-items-center justify-content-center'></textarea> <br>
             {% endif %}
+            <div class = 'display-flex align-items-center justify-content-center' style = 'text-align : center;'>
+                 <a atyle = 'color : #a8132f' href = 'https://postimages.org/'><h3 style = 'color : #a8132f'>UPLOAD IMAGES HERE. PASTE ONLY DIRECT LINK IN THE FIELD</h3></a> 
+             </div> <br>
             <input type="text" name="image" id="id_image" placeholder = 'URL IMAGE ( https://example.com ) ( UPLOAD IMAGES ON https://postimg.cc/ )'><br>
             <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button> <br> 
             <span>Z4que ® all Rights Reserved</span>
