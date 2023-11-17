@@ -21,11 +21,11 @@
                 <img src = "{% static 'imagesForBase/logo.png' %}" alt = 'CNNS' style = 'height : 2.3rem;'>
             </a>
         </div>
-        <div style = "width : 100%; padding : .33rem;
+        <div style = "width : 100%; padding : .22rem;
             display: flex; align-items: center; justify-content: right;">
             <div class = 'display-flex align-items-center justify-content-center mod-width'>
                 {% if user.is_authenticated %}
-                    <a href = "{% url 'anunturi' %}">Anunturi</a>
+                    <a href = "{% url 'anunturi' %}">Announces</a>
                     <a href = "{% url 'profile' %}">Profie</a>
                     <a href = "{% url 'contactPage' %}">Contact</a>
                 {% else %}
@@ -33,7 +33,6 @@
                     <a href = "{% url 'register' %}">Register</a>
                 {% endif %}
             </div>
-
         </div>
     </nav>
     <br>
