@@ -1,0 +1,19 @@
+.CNNSletters:hover{
+    transition : .4s;
+    font-size : 133%;
+    text-shadow: 4px 4px 1rem black;
+}
+.PL:hover{
+    transition : .4s;
+    font-size : 133%;
+    text-shadow: 4px 4px 1rem black;
+}
+.Home:hover{
+    transition : .4s;
+    font-size : 133%;
+    text-shadow: 4px 4px 1rem black;
+}
+.page_button:hover{
+    transform : translateY(-5px);
+    background-color : #a399a2;
+}

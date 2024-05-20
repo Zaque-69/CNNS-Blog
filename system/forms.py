@@ -20,5 +20,5 @@ class UpdateUser(forms.ModelForm):
 class UpdateUserAfterClass(forms.ModelForm):
     last_name = forms.CharField(max_length=100)
     class Meta : 
-        model = User
+        model = User 
         fields = ['last_name'] 

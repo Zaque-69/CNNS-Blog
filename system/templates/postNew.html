@@ -1,51 +1,72 @@
-{% extends 'base.html' %}
+{% extends 'form_base.html' %}
+{% load static %}
 {% block content %}
-<div style = 'padding : 1rem;'>
-    <div class = 'container display-flex align-items-center justify-content-center' style = 'flex-wrap: wrap; background-color: #c5b9c1; padding : 1rem;'><br>
-        <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem; padding-left : 5rem;'>
-            <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
-            <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
-        </div>
-        <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' enctype="multipart/form-data">
-            {% csrf_token %} <br>
-            <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
-            <textarea name="title" style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
-                color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
-                class = 'display-flex align-items-center justify-content-center'
-                placeholder = '  Title'>  {{post.title}}</textarea> <br>
-            <div class = 'w-100 display-flex align-items-center justify-content-center'>
-                <textarea id="w3review" name="content" placeholder = '  Content'
-                    style = 'max-width : 49.5rem; width : 100%; height : 10rem; background-color: #2e203c;
-                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'>{{post.content}}</textarea>
+    <div class = "add_wrap big_container display-flex align-items-center justify-content-center w-100" style = "background-color: #ad96af; border : 3px solid #552360;">
+        <div style = "width: 400px;" class = "display-flex align-items-center justify-content-center flex-direction-column">
+            <img src="{% static 'imagesForBase/phone.png' %}" alt="EMAIL_IMAGE" style = " width: 80%; margin-bottom : 1rem;">
+            <br>
+            <div style = "width: 100%; color : #E6E4DE;">
+                <div class = "w-100 display-flex">
+                    <div style = "margin-left : 1rem; margin-right: .5rem;" class = "display-flex align-items-center justify-content-center">
+                        <img src = "{% static 'imagesForBase/email_icon.png' %}" alt = "EMAIL_ICON" style = "height : 2rem;">
+                    </div>
+                    <div class = "w-100 display-flex align-items-center justify-content-center">
+                        <span class = "w-100" style = "color : #DEDAD2; text-align : center">zamfirandrey26@gmail.com</span>
+                    </div>
+                </div>
+                <div class = "w-100 display-flex">
+                    <div style = "margin-left : 1rem; margin-right: .5rem;" class = "display-flex align-items-center justify-content-center">
+                        <img src = "{% static 'imagesForBase/whatsapp_icon.png' %}" alt = "EMAIL_ICON" style = "height : 2rem;">
+                    </div>
+                    <div class = "w-100 display-flex align-items-center justify-content-center">
+                        <span class = "w-100" style = "color : #DEDAD2; text-align: center;">+40 799 999 999</span>
+                    </div>
+                </div>
             </div>
-            {% if user.is_superuser %}
+        </div> 
+        <div class = "w-100" style = "background-color: #e6e4de; border-left :  3px solid #552360;">
             <br>
-            <select name="class4post" id="cars" style = 'max-width : 49.5rem; width : 100%; height : 2rem; background-color: #2e203c;
-                color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'> 
-                <option>-</option>
-                <option value = 'anunt'>ANUNT ( postare vizibila de toata lumea )</option>
-                <option value = 'mxWLOPyckongDCJGBpQK'>5e</option>
-                <option value = 'eRstQPMlfBoYsLBVZgMW'>8e</option>
-                <option value = 'QFdINEQehJkVrcHZtUJs'>9i2</option>
-                <option value = 'amcYvyDjbIjNAWyLEwJG'>10i1</option>
-                <option value = 'RQRYehryuCqGGvTCJpek'>11s</option>
-            </select> <br>
-            {% else %}
+            <div style = "width : 100%; font-size : 2rem; text-align: center; color : #2E203C">
+                Postare noua !
+                {% if user.is_superuser %} ( admin ) {% endif %}
+            </div>
             <br>
-            <textarea name="class4post" id = 'class4post' style = 'max-width : 49.5rem; width : 100%; height : 1.75rem; background-color: #2e203c;
-                color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem; display : none;'
-                class = 'display-flex align-items-center justify-content-center'></textarea> <br>
-            {% endif %}
-           
-            <input type="text" name="image" id="id_image" placeholder = 'URL IMAGE'><br>
-            <div class = 'display-flex align-items-center justify-content-center' style = 'text-align : center;'>
-                 <a atyle = 'color : #a8132f' href = 'https://postimages.org/'><h3 style = 'color : #a8132f'>UPLOAD IMAGES HERE. PASTE ONLY DIRECT LINK IN THE FIELD</h3></a> 
-             </div> <br>
-            <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button> <br> 
-            <span>Z4que ® all Rights Reserved</span>
-        </form>
+            <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' enctype="multipart/form-data" style = "padding : .66rem;">
+                {% csrf_token %} <br>
+                <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
+                <textarea name="title" style = 'max-width : 49.5rem; width : 80%; height : 1.75rem; background-color: #2e203c;
+                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
+                    class = 'display-flex align-items-center justify-content-center'
+                    placeholder = '  Title'>  {{post.title}}</textarea> 
+                <div class = 'w-100 display-flex align-items-center justify-content-center'>
+                    <textarea id="w3review" name="content" placeholder = '  Content'
+                        style = 'max-width : 49.5rem; width : 80%; height : 4rem; background-color: #2e203c;
+                        color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'>{{post.content}}</textarea>
+                </div>
+                {% if user.is_superuser %}
+
+                <select name="class4post" id="cars" style = 'max-width : 49.5rem; width : 80%; height : 2rem; background-color: #2e203c;
+                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'> 
+                    <option>-</option>
+                    <option value = 'anunt'>ANUNT ( postare vizibila de toata lumea )</option>
+                    <option value = 'postare_normala'>Postare normala</option>
+                </select> <br>
+                {% else %}
+                <br>
+                <textarea name="class4post" id = 'class4post' style = 'max-width : 49.5rem; width : 80%; height : 1.75rem; background-color: #2e203c;
+                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem; display : none;'
+                    class = 'display-flex align-items-center justify-content-center'></textarea> <br>
+                {% endif %}
+               
+                <input type="file" name="image" accept="image/*" id="id_image" style = "width: 80%;">
+                <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button> <br> 
+                <span>Z4que ® all Rights Reserved</span>
+            </form>
+            <br>
+        </div>
     </div>
-</div>
+
+
 <script>
     try{document.getElementById('class4post').value = '{{user.last_name}}';} catch{}
     document.querySelectorAll('textarea').forEach((e) =>{
@@ -54,3 +75,5 @@
     })
 </script>
 {% endblock %}
+
+

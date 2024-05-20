@@ -9,7 +9,7 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.TextField(blank=True, null = True)
+    image = models.ImageField(blank=True, null=True, upload_to='postsImages')
 
     def __str__(self):
         return self.title
@@ -17,14 +17,15 @@ class Post(models.Model):
     def get_absolute_url(self) : return reverse('post-detail', kwargs = {'pk' : self.pk})
 
 class Comment(models.Model):
+    post = models.ForeignKey(Post, null = True, related_name='comments', on_delete=models.CASCADE)
     idComment = models.CharField(max_length=100)
     body = models.TextField()
     class4post = models.CharField(max_length=100)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.TextField(blank=True, null = True)
-    #ImageField(blank=True, null=True, upload_to='commentsImages')
+    image = models.ImageField(blank=True, null=True, upload_to='commentsImages')
 
     def __str__(self) : return self.idComment
     
     def get_absolute_url(self) : return reverse('comments-detail', kwargs = {'pk' : self.pk})
+ 

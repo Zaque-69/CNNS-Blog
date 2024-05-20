@@ -1,64 +1,57 @@
-{% extends "base.html" %}
+{% extends "form_base.html" %}
 {% load static %}
 
-{% block tit %}
-<div class = 'fullscreen' style = 'flex-direction: column; position : fixed;'>
-    <div style = 'display : flex ; gap : 1rem;'>
-        <span class = 'CNNSletters'>C</span>
-        <span class = 'CNNSletters'>N</span>
-        <span class = 'CNNSletters'>N</span>
-        <span class = 'CNNSletters'>S</span>
-    </div>
-    <div style = 'display : flex; gap :1rem;'>
-        <span class = 'PL'>P</span>
-        <span class = 'PL'>L</span>
-        <span class = 'PL'>O</span>
-        <span class = 'PL'>I</span>
-        <span class = 'PL'>E</span>
-        <span class = 'PL'>S</span>
-        <span class = 'PL'>T</span>
-        <span class = 'PL'>I</span>
-    </div>
-    <div style = 'display : flex; gap :1rem;'>
-        <span class = 'Home'>C</span>
-        <span class = 'Home'>O</span>
-        <span class = 'Home'>N</span>
-        <span class = 'Home'>T</span>
-        <span class = 'Home'>A</span>
-        <span class = 'Home'>C</span>
-        <span class = 'Home'>T</span>
-    </div>
-</div>
-{% endblock %}
-
 {% block content %}
-   
-    <div style = 'padding : 1rem;'>
-        <div class = 'display-flex align-items-center justify-content-center'>
-            <h1>Send E-mail</h1>
+    <div class = "add_wrap big_container display-flex align-items-center justify-content-center w-100" style = " background-color: #ad96af; border : 3px solid #552360;">
+        
+        <div class = "w-100" style = "background-color: #e6e4de; border-right :  3px solid #552360;">
+            <br>
+            <div style = "width : 100%; font-size : 2rem; text-align: center; color : #2E203C">
+                Contact !
+            </div>
+            <br>
+            <form id="form" class=" display-flex align-items-center justify-content-center" style = "padding : .66rem;">
+                <input type="text" name="from_name" id="from_name" placeholder = 'Your Email Adress' style = "width: 80%;"> 
+                <input type="text" name="to_name" id="to_name" placeholder="Your Name (Optional)" style = "width: 80%;"> 
+                <textarea type="text" style = 'max-width : 50rem; width : 80%; height : 8rem; background-color: #2e203c;
+                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;' name="message" id="message" placeholder = 'Message...'></textarea> 
+                <br>
+                <div class = 'w-100 display-flex align-items-center justify-content-center'>
+                    <button type="submit" id="button" value="Send Email" class = 'page_button'>Submit</button>
+                    <a href = 'https://twitter.com/Z4queee'>
+                        <img src="{% static 'imagesForBase/x.png' %}" style = 'height : 1.4rem;'>
+                    </a>
+                    <a href = 'https://www.instagram.com/zanddry/'>
+                        <img src="{% static 'imagesForBase/insta.png' %}" style = 'height : 1.4rem;'>
+                    </a>
+                </div>
+            </form> 
+            <br>
         </div>
-        <div class = 'container' style = 'background-color: #c5b9c1;'> <br> <br>
-            <form id="form" class=" display-flex align-items-center justify-content-center">
-                    <input type="text" name="from_name" id="from_name" placeholder = 'Your Email Adress...' style = 'display : none;'> <br>
-                    <input type="text" name="to_name" id="to_name" placeholder="Your Name... (Optional)"> <br>
-                    <textarea type="text" style = '   max-width : 50rem; width : 80%; height : 10rem; background-color: #2e203c;
-                    color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;' name="message" id="message" placeholder = 'Message...'></textarea> <br>
-                <button type="submit" id="button" value="Send Email" class = 'btnHover zButon'>Submit</button><br>
-                <p style = 'color : #af0000'>Your e-mail will be receved from : {{user.email}}</p>
-              </form>
-        </div> <br> <br>
-        <div class = 'display-flex align-items-center justify-content-center'>
-            ♨️
-        </div>
-    </div>
-    <br> 
-    <hr class="w-50" style = 'border : .5px solid #c5b9c1;'>
-    <div class = 'w-100 display-flex align-items-center justify-content-center'>
-        <div class = 'w-50 display-flex align-items-center' style = 'justify-content: end; gap : .2rem;'>
-            <a href = 'https://twitter.com/Z4queee'><img src="{% static 'imagesForBase/x.png' %}" style = 'height : 1.2rem;'></a>
-            <a href = 'https://www.instagram.com/zanddry/'><img src="{% static 'imagesForBase/insta.png' %}" style = 'height : 1.2rem;'></a>
-        </div>
-    </div>
+
+        <div style = "width: 400px;" class = "display-flex align-items-center justify-content-center flex-direction-column dissapear_768px">
+            <img src="{% static 'imagesForBase/email.png' %}" alt="EMAIL_IMAGE" style = " width: 100%; margin-bottom : 1rem;">
+            <br>
+            <div style = "width: 100%; color : #E6E4DE;">
+                <div class = "w-100 display-flex">
+                    <div style = "margin-left : 1rem; margin-right: .5rem;" class = "display-flex align-items-center justify-content-center">
+                        <img src = "{% static 'imagesForBase/email_icon.png' %}" alt = "EMAIL_ICON" style = "height : 2rem;">
+                    </div>
+                    <div class = "w-100 display-flex align-items-center justify-content-center">
+                        <span class = "w-100" style = "color : #DEDAD2; text-align : center;">zamfirandrey26@gmail.com</span>
+                    </div>
+                </div>
+                <div class = "w-100 display-flex">
+                    <div style = "margin-left : 1rem; margin-right: .5rem;" class = "display-flex align-items-center justify-content-center">
+                        <img src = "{% static 'imagesForBase/whatsapp_icon.png' %}" alt = "EMAIL_ICON" style = "height : 2rem;">
+                    </div>
+                    <div class = "w-100 display-flex align-items-center justify-content-center">
+                        <span class = "w-100" style = "color : #DEDAD2; text-align: center;">+40 799 999 999</span>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
     </script>

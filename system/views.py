@@ -1,19 +1,29 @@
-from .models import Post, Comment
-from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, UpdateUser, UpdateUserAfterClass
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
+from .models import Post, Comment
+from users.forms import ProfileIconForm
+from .forms import UserRegistrationForm, UpdateUser, UpdateUserAfterClass
+from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+def contactPage(request) : 
+    return render(request, 'contact.html')
 
 @login_required
-def home(request):
+def comentarii(request) : 
+    return render(request, 'comment.html')
+
+@login_required
+def home(request): 
     return render(request, 'home.html', {
         'posts' : Post.objects.all().order_by('-date_posted'),
         'comments' : Comment.objects.all().order_by('-date_posted')
     })
-
+ 
 @login_required
 def clasaX(request):
     return render(request, 'clasaX.html', {
@@ -21,6 +31,26 @@ def clasaX(request):
         'comments' : Comment.objects.all().order_by('-date_posted')
     })
 
+@login_required
+def profile(request):
+    return render(request, 'profile.html', {
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
+    })
+
+@login_required
+def clasa_mea(request):
+    return render(request, 'clasa_mea.html', {
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
+    })
+
+@login_required
+def anunturiPage(request) : 
+    return render(request, 'anunturi.html', {
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
+    })
 
 def register(request):
     form = UserRegistrationForm()
@@ -28,8 +58,11 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         
-        try : form.save()
-        except : pass
+        try : 
+            form.save()
+        except : 
+            pass
+
         usern = request.POST.get('username')
         passw = request.POST.get('password1')
         user = authenticate(request, username = usern, password = passw)
@@ -53,12 +86,11 @@ def loginSystem(request):
 
     return render(request, 'login.html')
 
-
 def SelectClass(request):
     form = UpdateUserAfterClass()
     listOfCodes = ["mxWLOPyckongDCJGBpQK", "eRstQPMlfBoYsLBVZgMW",
                     "QFdINEQehJkVrcHZtUJs", "amcYvyDjbIjNAWyLEwJG",
-                    'RQRYehryuCqGGvTCJpek']
+                    'RQRYehryuCqGGvTCJpek', "postare_normala"]
     if request.method == 'POST':
         ok = 0
         form = UpdateUserAfterClass(request.POST, instance = request.user)
@@ -70,52 +102,42 @@ def SelectClass(request):
             if form.is_valid() : 
                 form.save()
                 return redirect('home')
-        #else : messages.info(request, "Three credits remain in your account.")
-
+                
     return render(request, 'classroom.html', {
         'form' : form
     })
 
-
 @login_required
-def profile(request):
-    u_profile = UpdateUser()
-    if request.method == 'POST' :
-        u_profile = UpdateUser(request.POST, instance = request.user)
-        if u_profile.is_valid() : 
-            u_profile.save()
-    return render(request, 'profile.html', { 'u_form' : u_profile,})
+def edit_profile(request):
+    if request.method == 'POST':
+        u_form = UpdateUser(request.POST, instance=request.user)
+        p_form = ProfileIconForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('profile')
+    else:
+        u_form = UpdateUser(instance=request.user)
+        p_form = ProfileIconForm(instance=request.user.profile)
 
-
-def StatusCode404(request, exception):
-    return render(request, '404.html')
-
-@login_required
-def contactPage(request) : 
-    return render(request, 'contact.html')
-
-@login_required
-def anunturiPage(request) : 
-    return render(request, 'anunturi.html', {
-        'posts' : Post.objects.all().order_by('-date_posted'),
-        'comments' : Comment.objects.all().order_by('-date_posted')
+    return render(request, 'edit_profile.html', {
+        'u_form': u_form,
+        'p_form': p_form
     })
-
-@login_required
-def comentarii(request) : 
-    return render(request, 'comment.html')
-
-
-
-class PostListView(ListView):
-    model = Post
-    template_name = 'home.html'
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
 
 class PostdDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.object
+        comments = Comment.objects.filter(post=post)
+        context['comments'] = comments
+        return context
 
 class PostCreateView(CreateView):
     model = Post
@@ -140,7 +162,6 @@ class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
         if self.request.user == post.author : return True
         else : return False
 
-
 class PostdeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     template_name = 'postDelete.html'
@@ -155,7 +176,7 @@ class CommentCreateView(CreateView):
     model = Comment
     template_name = 'postNewComment.html'
     fields = ['idComment', 'body', 'class4post', 'image']
-
+ 
     def form_valid(self, form): 
         form.instance.author = self.request.user
         return super().form_valid(form)
@@ -167,7 +188,7 @@ class PostdDetailViewComment(DetailView):
 class PostUpdateViewComment(LoginRequiredMixin,UserPassesTestMixin, UpdateView):
     model = Comment
     template_name = 'postNewComment.html'
-    fields = ['post', 'body', 'class4post']
+    fields = ['idComment', 'body', 'class4post', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -187,3 +208,13 @@ class PostdeleteViewComment(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
         post = self.get_object()
         if self.request.user == post.author : return True
         else : return False
+
+@login_required
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    context = {
+        'user': user,
+        'posts' : Post.objects.all().order_by('-date_posted'),
+        'comments' : Comment.objects.all().order_by('-date_posted')
+        }
+    return render(request, 'profile.html', context)
