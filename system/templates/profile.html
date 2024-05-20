@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block animation %}
+<div class = 'fullscreen' style = 'flex-direction: column; position : fixed;'>
+    <div style = 'display : flex ; gap : 1rem;'>
+        <span class = 'CNNSletters'>C</span>
+        <span class = 'CNNSletters'>N</span>
+        <span class = 'CNNSletters'>N</span>
+        <span class = 'CNNSletters'>S</span>
+    </div>
+    <div style = 'display : flex; gap :1rem;'>
+        <span class = 'PL'>P</span>
+        <span class = 'PL'>L</span>
+        <span class = 'PL'>O</span>
+        <span class = 'PL'>I</span>
+        <span class = 'PL'>E</span>
+        <span class = 'PL'>S</span>
+        <span class = 'PL'>T</span>
+        <span class = 'PL'>I</span>
+    </div>
+    <div style = 'display : flex; gap :1rem;'>
+        <span class = 'Home'>P</span>
+        <span class = 'Home'>R</span>
+        <span class = 'Home'>O</span>
+        <span class = 'Home'>F</span>
+        <span class = 'Home'>I</span>
+        <span class = 'Home'>L</span>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class = "w-100 display-flex align-items-center justify-content-center">
+    <div style = "margin-left: 1rem; margin-right: 1rem;">
+        <img src = "{{user.profile.background.url}}" style = "max-width : 1000px; width: 100%; border : 2px solid #2E203C; border-radius: .5rem;">
+    </div>
+</div>
+<div style = "gap : 1rem;">
+    <div class = "display-flex align-items-center justify-content-center wrap_content" style = "padding : 1rem; gap : 1rem;">
+        
+        <div class = 'display-flex align-items-center justify-content-center' style = 'max-width : 400px; width : 100%; border-radius : .5rem; border: 2px solid #2E203C; flex-wrap: wrap; background-color: #E6E4DE;'>
+            <div class = 'w-100 display-flex align-items-center justify-content-center ' style = 'gap : 1rem;'>
+                <div class = "display-flex align-items-center justify-content-center flex-direction-column w-100" style = "padding-top : 1rem; padding-bottom : 1rem; gap : 1rem;">
+                    <img src="{{ user.profile.image.url }}" alt = "{{user.username}}_PFP" style = 'border : 2px solid #2E203C; border-radius: .5rem; width : 8rem; height : 8rem;'>
+                    <div class = "display-flex align-items-center justify-content-center" style = "gap : 1rem;">
+                        <a href = "{% url 'edit_profile' %}" class = "page_button">Edit Profil</a>
+                    </div>
+
+                </div>
+                <div style = 'color : #2E203C; width: 100%; flex-direction: column;' class = 'display-flex align-items-center justify-content-center'>
+                    <span style = 'font-size : 1.5rem; min-width: 10rem; text-align : center; color : #62182d'>@{{ user.username }}</span>
+                    {% if user.profile.description %}
+                        <span style = 'font-size : .8rem; min-width: 10rem; text-align : center; '><b>Bio : </b>{{ user.profile.description }}</span> 
+                        <a href = "{{ user.profile.website }}" style = "color : #1f157d">
+                            <span style = 'font-size : .8rem; padding-bottom : 1rem; min-width: 10rem; text-align : center; '><b>Website : </b>{{ user.profile.website }}</span> 
+                        </a>
+                    {% endif %}
+                    <br>
+                </div> 
+            </div> 
+        </div>
+    
+        <div class = 'display-flex align-items-center justify-content-center' style = 'border-radius : .5rem; max-width : 400px; width: 100%; flex-wrap: wrap;'>
+            <div class = "w-100 display-flex align-items-center justify-content-center">
+                <div class = "display-flex align-items-center justify-content-space-bertween" style = "gap : 1rem; width : 100%; padding : 1rem;">
+
+                    <div class = "square_container flex-direction-column">
+                        <img src="{% static 'imagesForBase/bars.png' %}" style = "height : 5rem;" alt="GRAPHIC_ICON"  class = "profile_icon GRAPHIC_ICON" onclick="show_dissapear('comment_count', 'post_count')" >
+                        <!--https://www.iconfinder.com/icons/3005765/analysis_bar_chart_graph_icon-->
+                        <span style = "font-size: .8rem;">
+                            Posts : <span class = "insert_post_count"></span>
+                        </span>
+                    </div>
+
+
+                    {% if user.is_superuser %}
+                    <div class = "square_container flex-direction-column">
+                        <img src="{% static 'imagesForBase/king.png' %}" style = "height : 5rem;" alt="KING_ICON" class = "profile_icon KING_ICON">
+                        <!--https://www.iconfinder.com/icons/754820/battle_checkmate_chess_figure_game_king_icon-->
+                        <span style = "font-size: .8rem;" style = "color : #62182d">Status : Admin</span>
+                    </div>
+
+                    
+                    {% else %}
+                    <div class = "square_container flex-direction-column">
+                        <img src="{% static 'imagesForBase/pawn.png' %}" style = "height : 5rem;" alt="PAWN_ICON" class = "profile_icon PAWN_ICON">
+                        <!--https://www.iconfinder.com/icons/754819/battle_checkmate_chess_figure_game_pawn_icon-->
+                        <span style = "font-size: .8rem;">Status : Elev</span>
+                    </div>
+
+
+                    {% endif %}
+
+                    <div class = "square_container flex-direction-column">
+                        <img src="{% static 'imagesForBase/comment_profile.png' %}" style = "height : 5rem;" alt="COMMENNT_ICON" class = "profile_icon COMMENNT_ICON" onclick = "show_dissapear('post_count', 'comment_count')">
+                        <span style = "font-size: .8rem;">
+                            Comments : <span class = "insert_comment_count"></span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for post in posts %}
+    {% if post.author|slugify == user.username|slugify %}
+        <div style = "padding : 1rem" class = "post_count">
+            <div class = ' container display-flex align-items-center justify-content-center ' style = 'flex-direction: column;'>
+                <div class = "display-flex" style = "width : 100%;">
+                    <div class = 'display-flex align-items-center justify-content-top carbon_fiber flex-direction-column' style = 'gap : .5rem;  border : 2px solid #2E203C; border-radius : .33rem; padding : .33rem; margin : 1rem;'>
+                        <a style = "padding : 0;" href = "{% url 'user_profile' username=post.author.username %}">
+                            <img src="{{ post.author.profile.image.url }}" alt = 'Author_IMG' class = 'round'>
+                        </a>
+                        {% if post.author|slugify == user.username|slugify or user.is_superuser %}
+                        <a href="{% url 'post-delete' post.id %}" class = 'page_button {{post.author}}{{post.id}}' style = "border : none;">
+                            <img src = "{% static 'imagesForBase/trash.png'%}" alt = "TRASH" style = "height : 1.5rem; border : none;">
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div style = "width : 88.5%;">
+                        <div style = " margin-top : 1rem; margin-bottom: 1rem;">
+                            <span style = 'color : #552360; font-size : 1rem;'>{{post.author}} </span>
+                            ➤
+                            <span style = 'color : #303030; font-size : 1rem'>{{post.date_posted}}</span> 
+                        </div>
+                        <div >
+                            <div style = "font-size: 1.5rem;">
+                                <span style = 'background-color : #50265E; color : white; border-radius : .33rem;'>
+                                    #{{post.id}}
+                                </span> 
+                                - 
+                                {{post.title}} 
+                            </div>
+                            <div class = "w-100 display-flex">
+                                <p style = "font-family: 'Poppins', sans-serif; text-align: left; width : 95%;">
+                                    <span>▪</span>{{post.content}}
+                                </p>
+                            </div>
+
+                            {% if post.image %}
+                            <div class = "display-flex align-items-center justify-content-center" style = "background-color: #C8BAC3; margin : 1rem; border-radius : .33rem; border : 2px solid #2E203C;">
+                                <img src = '/media/{{post.image}}' alt = '{{post.image}}' style = 'width: 100%;  margin : .66rem;'>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+{% for comment in comments %}
+    {% if comment.author|slugify == user.username|slugify %}
+        <div style = "padding-left : 1rem; padding-right : 1rem;" class = "comment_count">
+            <div class = 'display-flex align-items-center justify-content-center'>
+                <div  style = ' max-width : 772px; width : 100%;'>
+                    <div class = 'comment_container display-flex justify-content-center' style = ' background-color: #dbd3dc; padding : .5rem;'> 
+                        <div class = "display-flex align-items-center justify-content-top flex-direction-column" style = "gap : .5rem;">
+                            <img src="{{comment.author.profile.image.url}}" style = "height : 2.5rem; width : 2.5rem;" class = "round"  alt="COMMENT_PFP">
+                        </div>
+                        <div class = "display-flex justify-content-left flex-direction-column" style = "width: 90%; margin-left : 1rem;">  
+                            <div>
+                                <span style = 'color : #552360; font-size : .9rem;'>{{comment.author}} </span>
+                                ➤
+                                <span style = 'color : #303030; font-size : .9rem'>{{comment.date_posted}}</span> 
+                                
+                            </div>
+                            <p style = "font-family: 'Poppins', sans-serif; text-align: left; width : 95%;">
+                                <span>▪</span>{{comment.body}}
+                            </p>
+                            {% if post.image %}
+                                <div class = "display-flex align-items-center justify-content-center" style = "background-color: #C8BAC3; margin : 1rem; border-radius : .33rem; border : 2px solid #2E203C;">
+                                    <img src = '/media/{{comment.image}}' alt = '{{comment.image}}' style = 'width: 100%;  margin : .66rem;'>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+<script>
+
+    //functia numara postarile si comentariile pentru a le scrie sus
+    function count_models(element, insert_to){
+        let c = 0;
+        document.querySelectorAll("." + element).forEach((e) => { c++;})
+        document.querySelector("." + insert_to).innerHTML = c;
+    }
+    count_models("post_count", "insert_post_count");
+    count_models("comment_count", "insert_comment_count")
+
+
+</script>
+
+{% endblock %}

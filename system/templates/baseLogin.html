@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNNS - Welcome !</title>
+    <link rel = "icon" href = "{% static 'imagesForBase/logo.ico'%}">
+    <link rel="stylesheet" href = "{% static 'css/keyframes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/shorts.css'%}">
+	<link rel="stylesheet" href="{% static 'css/index.css'%}">
+	<link rel="stylesheet" href="{% static 'css/media.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+<body class = "svg_background">
+<div style = 'position : absolute; flex-wrap: wrap; ' class = 'w-100 h-100 display-flex justify-content-center align-items-center'>
+    <div class = 'h-75 display-flex formOutsideDiv' style = 'flex-direction: column;'>
+        {% block content %} {% endblock %}
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'>
+            <a href="https://colegiul-nichita.ro/contact/" style = 'color : #4862A9;'>Contact CNNS</a>
+            <div style = 'flex-direction: row;'> <span>Personal Social Networks : </span>
+                <div class = 'display-flex align-items-center justify-content-center' style = 'flex-direction: row; gap : 1rem;'>
+                    <a href = 'https://twitter.com/Z4queee' style = 'padding-top : 1vh;'>
+                        <img src = '{% static "imagesForBase/x.png" %}' alt = 'X' style = 'height : 1.5rem;'>
+                    </a>
+                    <a href = 'https://www.instagram.com/zanddry/' style = 'padding-top : 1vh;'>
+                        <img src = '{% static "imagesForBase/insta.png" %}' alt = 'IG' style = 'height : 1.5rem;'>
+                    </a>
+                    
+                </div>
+            </div>
+            <br> <br>
+        </div>
+    </div>
+    <div class = ' h-75 secondDivFlex w-50' style = 'flex-direction: column;'>
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'height : 80%;'>
+            <span class = 'firstType' style = 'color : white; font-size: 2.66rem; font-family : "Anton", sans-serif; text-align: center ; padding : 2rem; display : none'></span>
+            <span class = 'regisaterType' style = 'color : white; font-size: 2.66rem; text-align: center ; padding : 2rem; display : none'></span>
+            <span style = 'color : #202124;' class = 'classroom'>Classroom</span>
+        </div>
+        <div class = 'w-100 display-flex align-items-center justify-content-center' style = 'flex-direction: column; height : 20%;'>
+        <span>Z4que ® all rights reserved </span>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+<script src = "{% static 'js/index.js' %}"></script>
+<script src = "{% static 'js/typeit.js' %}"></script>
+
+<script>
+    if ( document.querySelector('h1').value == 'Register') document.querySelector('.regisaterType').style.display = 'block';
+    else document.querySelector('.firstType').style.display = 'block';
+</script>
+
+</html>

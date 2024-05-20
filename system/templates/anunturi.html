@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% for post in posts %} 
+    {% if post.class4post == 'anunt' %}
+    <div style = "padding : 1rem">
+            <div class = ' container display-flex align-items-center justify-content-center ' style = 'flex-direction: column; border : 2px solid #2E203C;'>
+                <div class = "display-flex" style = "width : 100%;">
+                    <div class = 'display-flex align-items-baseline carbon_fiber' style = 'gap : .33rem;  border : 2px solid #2E203C; border-radius : .33rem; padding : .33rem; margin : 1rem;'>
+                        <img src="{{ post.author.profile.image.url }}" alt = 'Author_IMG' class = 'round'>
+                    </div>
+                    <div style = "width : 88.5%;">
+                        <div style = " margin-top : 1rem; margin-bottom: 1rem;">
+                            <span style = 'color : #552360; font-size : 1rem;'>{{post.author}} </span>
+                            ➤
+                            <span style = 'color : #303030; font-size : 1rem'>{{post.date_posted}}</span> 
+                        </div>
+                        <div>
+                            <div style = "font-size: 1.5rem;">
+                                {{post.title}} 
+                            </div>
+                            <div class = "w-100 display-flex">
+                                <p style = "font-family: 'Poppins', sans-serif; text-align: ledt; width : 95%;">
+                                    <span>▪</span>{{post.content}}
+                                </p>
+                            </div>
+
+                            {% if post.image %}
+                            <div class = "display-flex align-items-center justify-content-center" style = "background-color: #C8BAC3; margin : 1rem; border-radius : .33rem; border : 2px solid #2E203C;">
+                                <img src = '/media/{{post.image}}' alt = '{{post.image}}' style = 'width: 100%; margin : .66rem;'>
+                            </div>
+                            {% else  %}
+                            <div class = "display-flex align-items-center justify-content-center" style = "background-color: #C8BAC3; margin : 1rem; border-radius : .33rem;"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <br>
+        {%if user.is_superuser%}
+        <div class="display-flex align-items-center justify-content-center" style = 'gap : .66rem;'>
+            <a href="{% url 'post-update' post.id %}" class = 'page_button {{post.author}}{{post.id}}'>Update</a>
+            <a href="{% url 'post-detail' post.id %}" class = 'page_button'>More</a>
+
+            <a class = "comment_show_{{post.id}}" onclick = "comment_visualisation('1', '{{post.id}}')"> 
+                <img src="{% static 'imagesForBase/com2.png' %}" alt = 'Show Comments' style = 'height : 2rem;'>
+            </a>
+            <a class = "comment_hide_{{post.id}}" onclick = "comment_visualisation('0', '{{post.id}}')">
+                <img src="{% static 'imagesForBase/com1.png' %}" alt = 'Hide Comments' style = 'height : 2rem;'>
+            </a>    
+        </div>
+        {% endif %}
+    {% endif %}
+{% endfor %} 
+
+{% endblock %}

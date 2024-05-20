@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class = 'container display-flex align-items-center justify-content-center' style = 'flex-wrap: wrap; background-color: #c5b9c1;'>
+    <br>
+    <div class = 'w-100 display-flex align-items-center ' style = 'gap : 1rem;padding-left : 5rem;'>
+        <img src="{{ user.profile.image.url }}" class = 'round' style = 'width : 3rem; height : 3rem;'>
+        <span style = 'min-width: 10rem; display : block;'>Username : {{ user.username }}</span> 
+    </div>
+    <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75'>
+        {% csrf_token %} <br>
+        <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
+
+        <textarea name="class4post" style = 'max-width : 49.5rem; width : 100%; height : 2rem; background-color: #2e203c;
+            color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'
+            class = 'display-flex align-items-center justify-content-center'
+            placeholder = '  Title'></textarea><br>
+
+        <div class = 'w-100 display-flex align-items-center justify-content-center'>
+            <textarea id="w3review" name="content" placeholder = '  Content'
+                style = 'max-width : 49.5rem; width : 100%; height : 10rem; background-color: #2e203c;
+                color : white; border-bottom: 3px solid black; border-radius : .5rem; padding : .33rem;'></textarea>
+        </div><br>
+        <button type = 'submit' name = 'Create' class = 'btnHover zButon'>Create</button> <br> 
+        <span>Z4que ® all Rights Reserved</span>
+    </form>
+</div>
+
+{% endblock %}

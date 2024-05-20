@@ -1,0 +1,17 @@
+{% extends 'baseLogin.html' %}
+{% load static %}
+{% block content %}
+<div class = 'w-100 display-flex align-items-center justify-content-center' style = 'flex-direction: column; height : 10%;'> </div>
+    <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' style = 'background: none;'>
+        {% csrf_token %}
+        <h1>Register</h1>
+        <input style = 'width : 80%;' type="text" name = 'username' placeholder = '  Username'> <br>
+        <input style = 'width : 80%;' type="password" name = 'password1' placeholder = '  Password'> <br>
+        <input style = 'width : 80%;' type="password" name = 'password2' placeholder = '  Repeat password'> <br> 
+        <input style = 'width : 80%;' type="text" name="email" placeholder = '  E-mail'> <br>
+        <button type = 'submit' name = 'Register'>Register</button> <br>
+        <div>
+            <p style = ' text-align: center;' class = 'w-100 display-flex justify-content-center align-items-center '>You already have an account ? <a style = 'color : #4862A9; cursor : pointer;' href = "{% url 'log' %}">Log in !</a></p>
+        </div>
+    </form>
+{% endblock %} 

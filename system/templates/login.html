@@ -1,0 +1,16 @@
+{% extends 'baseLogin.html' %}
+{% load static %}
+{% block content %}
+    <form method = 'POST' action = '' class = 'display-flex align-items-center justify-content-center w-100 h-75' style = 'background: none;'>
+        {% csrf_token %}
+        <div class = 'w-100 h-25 display-flex align-items-center justify-content-center' style = 'flex-direction: column;'> </div>
+        <h1 style = 'color : #210D38; '>Welcome ! </h1>
+        <input type="text" name = 'username' style = 'width : 80%;' placeholder="  Username" > <br>
+        <input type="password" name = 'password1' style = 'width : 80%;' placeholder="  Password"> <br>
+        <button type = 'submit' name = 'Login' >Login</button> <br>
+        <div class = 'padding-1rem'>
+            <span style = ' text-align: center;' class = 'w-100 display-flex justify-content-center align-items-center '>Nu ai un cont ?<a style = 'color : #4862A9; cursor : pointer;' href = "{% url 'register' %}"> Înregistrare  !</a></span>
+            <span style = ' text-align: center;' class = 'w-100 display-flex justify-content-center align-items-center '>Probleme cu contul ?<a style = 'color : #4862A9; cursor : pointer;' href = "{% url 'contactPage' %}">Contact !</a></span>
+        </div>
+    </form>
+{% endblock %}
