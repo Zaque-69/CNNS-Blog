@@ -24,4 +24,4 @@
 
 <img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNS-Blog/blob/main/readmepics/Untitled2.png">
 
-<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNS-Blog/blob/main/readmepics/Untitled1.png">
+<img width="1607" alt="webui" src="https://github.com/Zaque-69/CNNS-Blog/blob/main/readmepics/Untitled.png">
